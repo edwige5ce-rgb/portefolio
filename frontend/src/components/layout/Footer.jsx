@@ -50,7 +50,6 @@ const Footer = () => {
             <h4 className="text-xs tracking-[0.2em] uppercase text-stone-400 mb-6">Navigation</h4>
             <nav className="flex flex-col gap-3">
               <Link to="/" className="text-sm text-stone-300 hover:text-white transition-colors duration-300">Accueil</Link>
-              <Link to="/catalogue" className="text-sm text-stone-300 hover:text-white transition-colors duration-300">Catalogue</Link>
               <Link to="/atmospheres" className="text-sm text-stone-300 hover:text-white transition-colors duration-300">Atmosphères</Link>
               <Link to="/projets" className="text-sm text-stone-300 hover:text-white transition-colors duration-300">Projets</Link>
               <Link to="/contact" className="text-sm text-stone-300 hover:text-white transition-colors duration-300">Contact</Link>
