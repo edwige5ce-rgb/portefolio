@@ -24,30 +24,42 @@ export const heroContent = {
   scrollText: "Défiler pour explorer"
 };
 
-export const highlights = [
-  {
-    id: 1,
-    label: "Boulangerie Lulu",
-    title: "L'art de l'accueil",
-    subtitle: "Bruxelles"
-  },
-  {
-    id: 2,
-    label: "Yacht Privé",
-    title: "Luxe & Sérénité",
-    subtitle: "Monaco"
-  },
-  {
-    id: 3,
-    label: "A-Frame Retreat",
-    title: "Nature & Design",
-    subtitle: "Alpes"
-  }
-];
-
 export const projects = [
   {
     id: 1,
+    slug: "maison-edouard",
+    title: "Édouard",
+    subtitle: "Brasserie & Boulangerie",
+    location: "Bruxelles, Belgique",
+    year: "2025",
+    category: "Commercial",
+    heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/70jiw4uo_Enscape_2025-01-16-13-59-02.png",
+    description: "Maison Édouard réinvente la brasserie traditionnelle belge. Les murs vert sapin dialoguent avec les banquettes en cuir cognac et les boiseries chaleureuses, créant une atmosphère à la fois intemporelle et contemporaine.",
+    features: [
+      {
+        title: "Murs Signature",
+        description: "Revêtement mural vert sapin avec lettrage doré artisanal",
+        stat: "Vert Forêt"
+      },
+      {
+        title: "Banquettes Cuir",
+        description: "Cuir naturel cognac capitonné, confort premium",
+        stat: "Sur mesure"
+      },
+      {
+        title: "Parquet Chêne",
+        description: "Parquet massif aspect vieilli pour une ambiance authentique",
+        stat: "250 m²"
+      }
+    ],
+    gallery: [
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/70jiw4uo_Enscape_2025-01-16-13-59-02.png"
+    ],
+    colors: ["#2D4A3E", "#C4783A", "#D4A574", "#F5F0E6"],
+    services: ["Design d'intérieur", "Mobilier sur mesure", "Signalétique", "Éclairage"]
+  },
+  {
+    id: 2,
     slug: "boulangerie-lulu",
     title: "Lulu",
     subtitle: "Boulangerie & Café",
@@ -80,7 +92,111 @@ export const projects = [
     services: ["Design d'intérieur", "Mobilier sur mesure", "Éclairage", "Suivi de chantier"]
   },
   {
-    id: 2,
+    id: 3,
+    slug: "bureau-moderne",
+    title: "Horizon",
+    subtitle: "Espace de Coworking",
+    location: "Paris, France",
+    year: "2025",
+    category: "Bureau",
+    heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/kjnw5yx8_OFFICE%20FOUR.png",
+    images: [
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/kjnw5yx8_OFFICE%20FOUR.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/5uiziv6e_OFFICE%20ONE.png"
+    ],
+    description: "Un espace de travail contemporain où le bleu-vert profond rencontre le bois naturel. Les panneaux acoustiques beige et le parquet chevrons créent une atmosphère propice à la concentration et à la créativité.",
+    features: [
+      {
+        title: "Parquet Chevrons",
+        description: "Chêne naturel posé en chevrons hongrois, élégance classique",
+        stat: "Premium"
+      },
+      {
+        title: "Mur Accent",
+        description: "Panneaux moulurés bleu-vert avec éclairage LED indirect",
+        stat: "Bleu Canard"
+      },
+      {
+        title: "Postes de Travail",
+        description: "Bureaux en bois massif avec gestion des câbles intégrée",
+        stat: "6 postes"
+      }
+    ],
+    gallery: [
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/kjnw5yx8_OFFICE%20FOUR.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/5uiziv6e_OFFICE%20ONE.png"
+    ],
+    colors: ["#5B7B7A", "#E8DFD0", "#C4A67C", "#F5F0E6"],
+    services: ["Design d'intérieur", "Aménagement bureau", "Mobilier", "Acoustique"]
+  },
+  {
+    id: 4,
+    slug: "bureau-sport",
+    title: "Victory",
+    subtitle: "Agence Sportive",
+    location: "Lyon, France",
+    year: "2024",
+    category: "Bureau",
+    heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zvsicm76_ChatGPT%20Image%2025%20janv.%202026%2C%2016_29_26.png",
+    description: "Un bureau d'agence sportive qui respire la passion du basketball. Le cuir noir, le parquet chevrons et les éléments décoratifs sportifs créent un univers immersif pour les athlètes et agents.",
+    features: [
+      {
+        title: "Espace Lounge",
+        description: "Canapé en cuir noir premium avec table basse en verre fumé",
+        stat: "VIP"
+      },
+      {
+        title: "Déco Sportive",
+        description: "Ballons signature et affiche iconique Michael Jordan",
+        stat: "Collector"
+      },
+      {
+        title: "Parquet Chevrons",
+        description: "Chêne clair posé en chevrons, référence aux salles de sport",
+        stat: "45 m²"
+      }
+    ],
+    gallery: [
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zvsicm76_ChatGPT%20Image%2025%20janv.%202026%2C%2016_29_26.png"
+    ],
+    colors: ["#1A1A1A", "#F5F5F5", "#C4A67C", "#E85D04"],
+    services: ["Design d'intérieur", "Mobilier sur mesure", "Décoration thématique"]
+  },
+  {
+    id: 5,
+    slug: "chalet-bois",
+    title: "Refuge",
+    subtitle: "Intérieur Montagne",
+    location: "Chamonix, France",
+    year: "2024",
+    category: "Résidentiel",
+    heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/cmghhf49_Enscape_2025-10-14-11-47-25.png",
+    description: "Un intérieur de chalet où le bois règne en maître. L'espace ouvert combine cuisine, salle à manger et coin lecture sous une mezzanine, créant une atmosphère chaleureuse et authentique.",
+    features: [
+      {
+        title: "Structure Bois",
+        description: "Ossature et finitions en bois massif, construction traditionnelle",
+        stat: "100% Bois"
+      },
+      {
+        title: "Mezzanine",
+        description: "Espace nuit suspendu avec garde-corps en bois ajouré",
+        stat: "15 m²"
+      },
+      {
+        title: "Coin Lecture",
+        description: "Banquette intégrée avec bibliothèque murale",
+        stat: "Cosy"
+      }
+    ],
+    gallery: [
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/cmghhf49_Enscape_2025-10-14-11-47-25.png"
+    ],
+    colors: ["#8B7355", "#D4C4A8", "#5C5C5C", "#F5F0E6"],
+    services: ["Architecture d'intérieur", "Mobilier intégré", "Aménagement montagne"]
+  },
+  {
+    id: 6,
     slug: "yacht-prive",
     title: "Horizon",
     subtitle: "Yacht de Luxe",
@@ -113,7 +229,7 @@ export const projects = [
     services: ["Concept naval", "Aménagement intérieur", "Mobilier yacht", "Éclairage"]
   },
   {
-    id: 3,
+    id: 7,
     slug: "aframe-retreat",
     title: "Altitude",
     subtitle: "Refuge A-Frame",
