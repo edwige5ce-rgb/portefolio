@@ -1,175 +1,277 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowDown } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { heroContent, atmospheres, projects, services } from '../data/mock';
+import { ChevronDown, ArrowRight, Instagram, Linkedin } from 'lucide-react';
+import { siteConfig, heroContent, projects, services } from '../data/mock';
 
 const Home = () => {
+  const [scrollY, setScrollY] = useState(0);
+  const sectionsRef = useRef([]);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const addToRefs = (el) => {
+    if (el && !sectionsRef.current.includes(el)) {
+      sectionsRef.current.push(el);
+    }
+  };
+
   return (
-    <div className="bg-stone-50">
-      {/* Hero Section */}
+    <div className="bg-black min-h-screen">
+      {/* Navigation */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrollY > 100 ? 'bg-black/80 backdrop-blur-xl' : 'bg-transparent'
+      }`}>
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="flex items-center justify-between h-16">
+            <Link to="/" className="text-white font-semibold text-lg tracking-tight">
+              {siteConfig.name}
+            </Link>
+            <div className="hidden md:flex items-center gap-8">
+              <a href="#projets" className="text-sm text-white/80 hover:text-white transition-colors">Projets</a>
+              <a href="#about" className="text-sm text-white/80 hover:text-white transition-colors">À propos</a>
+              <Link to="/contact" className="text-sm text-white/80 hover:text-white transition-colors">Contact</Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section - Apple Style */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 transition-transform duration-100"
+          style={{ transform: `scale(${1 + scrollY * 0.0003})` }}
+        >
           <img
-            src={heroContent.image}
-            alt="Interior Design"
-            className="w-full h-full object-cover"
+            src={projects[0].heroImage}
+            alt="Hero"
+            className="w-full h-full object-cover opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
-          <p className="text-sm tracking-[0.4em] uppercase mb-6 animate-fade-in-up opacity-80">
+        <div className="relative z-10 text-center px-6">
+          <p className="text-white/60 text-sm tracking-[0.3em] uppercase mb-6 animate-fadeInUp">
             {heroContent.subtitle}
           </p>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-wider mb-8 animate-fade-in-up animation-delay-200">
+          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-semibold text-white tracking-tight leading-none mb-8 animate-fadeInUp animation-delay-200">
             {heroContent.title}
           </h1>
-          <p className="text-lg md:text-xl font-light leading-relaxed mb-12 max-w-2xl mx-auto text-white/80 animate-fade-in-up animation-delay-400">
+          <p className="text-xl md:text-2xl text-white/70 font-light max-w-xl mx-auto animate-fadeInUp animation-delay-400">
             {heroContent.description}
           </p>
-          <Link to="/projets">
-            <Button
-              size="lg"
-              className="bg-white text-stone-900 hover:bg-stone-100 rounded-none px-10 py-6 text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 animate-fade-in-up animation-delay-600"
-            >
-              {heroContent.cta}
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </Link>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-          <ArrowDown className="w-6 h-6 text-white/60" />
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
+          <ChevronDown className="w-6 h-6 text-white/40" />
+        </div>
+      </section>
+
+      {/* Projects Showcase - Apple Card Style */}
+      <section id="projets" className="py-32 bg-black">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div ref={addToRefs} className="reveal mb-20">
+            <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">Portfolio</p>
+            <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight">
+              Nos Projets
+            </h2>
+          </div>
+
+          <div className="space-y-40">
+            {projects.map((project, index) => (
+              <Link 
+                to={`/projet/${project.slug}`} 
+                key={project.id}
+                ref={addToRefs}
+                className="reveal block group"
+              >
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                }`}>
+                  {/* Image */}
+                  <div className={`relative overflow-hidden rounded-3xl ${
+                    index % 2 === 1 ? 'lg:order-2' : ''
+                  }`}>
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img
+                        src={project.heroImage}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+
+                  {/* Content */}
+                  <div className={`${index % 2 === 1 ? 'lg:order-1 lg:text-right' : ''}`}>
+                    <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">
+                      {project.category} — {project.year}
+                    </p>
+                    <h3 className="text-4xl md:text-6xl font-semibold text-white tracking-tight mb-4">
+                      {project.title}
+                    </h3>
+                    <p className="text-xl text-white/60 mb-2">{project.subtitle}</p>
+                    <p className="text-white/40 mb-8">{project.location}</p>
+                    <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-md ${
+                      index % 2 === 1 ? 'lg:ml-auto' : ''
+                    }">
+                      {project.description}
+                    </p>
+                    <div className={`flex items-center gap-2 text-white group-hover:gap-4 transition-all duration-300 ${
+                      index % 2 === 1 ? 'lg:justify-end' : ''
+                    }`}>
+                      <span className="text-sm font-medium">Voir le projet</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="text-center group"
-            >
-              <div className="w-px h-16 bg-stone-300 mx-auto mb-8 group-hover:h-20 transition-all duration-500" />
-              <h3 className="text-xl font-light tracking-wider mb-4 text-stone-900">
-                {service.title}
-              </h3>
-              <p className="text-stone-500 text-sm leading-relaxed">
-                {service.description}
+      <section className="py-32 bg-[#0a0a0a]">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div ref={addToRefs} className="reveal text-center mb-20">
+            <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">Expertise</p>
+            <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight">
+              Ce que nous faisons
+            </h2>
+          </div>
+
+          <div ref={addToRefs} className="reveal grid grid-cols-1 md:grid-cols-3 gap-12">
+            {services.map((service, index) => (
+              <div key={index} className="text-center">
+                <div className="w-px h-20 bg-white/20 mx-auto mb-8" />
+                <h3 className="text-2xl font-semibold text-white mb-4">{service.title}</h3>
+                <p className="text-white/50">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-32 bg-black">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div ref={addToRefs} className="reveal">
+              <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">Notre vision</p>
+              <h2 className="text-4xl md:text-6xl font-semibold text-white tracking-tight mb-8">
+                Chaque espace<br/>raconte une histoire.
+              </h2>
+              <p className="text-xl text-white/60 leading-relaxed mb-8">
+                Nous croyons que le design d'intérieur est bien plus qu'une question d'esthétique. 
+                C'est l'art de créer des environnements qui inspirent, apaisent et transforment 
+                la façon dont les gens vivent et travaillent.
               </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Featured Atmospheres */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
-            <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-stone-400 mb-3">Inspirations</p>
-              <h2 className="text-4xl md:text-5xl font-light tracking-wide text-stone-900">Atmosphères</h2>
-            </div>
-            <Link
-              to="/atmospheres"
-              className="mt-6 md:mt-0 text-sm tracking-wider uppercase text-stone-500 hover:text-stone-900 transition-colors duration-300 flex items-center gap-2 group"
-            >
-              Toutes les atmosphères
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {atmospheres.slice(0, 3).map((atm) => (
-              <Link
-                key={atm.id}
-                to="/atmospheres"
-                className="group cursor-pointer"
+              <Link 
+                to="/contact"
+                className="inline-flex items-center gap-3 text-white font-medium hover:gap-5 transition-all duration-300"
               >
-                <div className="aspect-[4/5] overflow-hidden mb-6">
+                Discutons de votre projet
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+            <div ref={addToRefs} className="reveal">
+              <div className="relative">
+                <div className="aspect-square rounded-3xl overflow-hidden">
                   <img
-                    src={atm.image}
-                    alt={atm.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    src={projects[2].heroImage}
+                    alt="About"
+                    className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="text-xs tracking-[0.2em] uppercase text-stone-400 mb-2">{atm.style}</p>
-                <h3 className="text-xl font-light tracking-wide text-stone-900 mb-2">{atm.title}</h3>
-                <p className="text-sm text-stone-500">{atm.location}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="py-24 bg-stone-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
-            <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-stone-400 mb-3">Portfolio</p>
-              <h2 className="text-4xl md:text-5xl font-light tracking-wide text-stone-900">Projets Récents</h2>
+                <div className="absolute -bottom-8 -left-8 bg-white text-black p-8 rounded-2xl max-w-xs">
+                  <p className="text-4xl font-bold mb-2">10+</p>
+                  <p className="text-gray-600">Années d'expérience en design d'intérieur</p>
+                </div>
+              </div>
             </div>
-            <Link
-              to="/projets"
-              className="mt-6 md:mt-0 text-sm tracking-wider uppercase text-stone-500 hover:text-stone-900 transition-colors duration-300 flex items-center gap-2 group"
-            >
-              Tous les projets
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {projects.filter(p => p.featured).map((project) => (
-              <Link
-                key={project.id}
-                to="/projets"
-                className="group cursor-pointer"
-              >
-                <div className="aspect-[16/10] overflow-hidden mb-6">
-                  <img
-                    src={project.images[0]}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex items-center gap-4 mb-3">
-                  <span className="text-xs tracking-[0.2em] uppercase text-stone-400">{project.category}</span>
-                  <span className="w-1 h-1 rounded-full bg-stone-300" />
-                  <span className="text-xs text-stone-400">{project.year}</span>
-                </div>
-                <h3 className="text-2xl font-light tracking-wide text-stone-900 mb-2">{project.title}</h3>
-                <p className="text-sm text-stone-500">{project.location}</p>
-              </Link>
-            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-stone-900 text-white text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <p className="text-xs tracking-[0.3em] uppercase text-stone-400 mb-6">Votre projet</p>
-          <h2 className="text-4xl md:text-5xl font-light tracking-wide mb-8">Créons ensemble votre atmosphère</h2>
-          <p className="text-stone-400 mb-12 leading-relaxed">
-            Chaque espace raconte une histoire. Partagez-nous votre vision et transformons-la en réalité.
-          </p>
-          <Link to="/contact">
-            <Button
-              size="lg"
-              className="bg-white text-stone-900 hover:bg-stone-100 rounded-none px-10 py-6 text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105"
+      <section className="py-40 bg-gradient-to-b from-black to-[#111]">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div ref={addToRefs} className="reveal">
+            <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight mb-8">
+              Prêt à créer<br/>votre atmosphère ?
+            </h2>
+            <Link 
+              to="/contact"
+              className="inline-flex items-center justify-center gap-3 bg-white text-black px-10 py-5 rounded-full font-medium text-lg hover:bg-white/90 transition-colors"
             >
               Nous contacter
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </Link>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="py-16 bg-[#0a0a0a] border-t border-white/10">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div className="md:col-span-2">
+              <h3 className="text-2xl font-semibold text-white mb-4">{siteConfig.name}</h3>
+              <p className="text-white/50 mb-6 max-w-md">{siteConfig.description}</p>
+              <div className="flex gap-4">
+                <a href={siteConfig.social.instagram} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:bg-white/20 hover:text-white transition-all">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href={siteConfig.social.linkedin} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:bg-white/20 hover:text-white transition-all">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-white/40 text-sm uppercase tracking-wider mb-4">Navigation</h4>
+              <div className="flex flex-col gap-3">
+                <a href="#projets" className="text-white/60 hover:text-white transition-colors">Projets</a>
+                <a href="#about" className="text-white/60 hover:text-white transition-colors">À propos</a>
+                <Link to="/contact" className="text-white/60 hover:text-white transition-colors">Contact</Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-white/40 text-sm uppercase tracking-wider mb-4">Contact</h4>
+              <div className="flex flex-col gap-3 text-white/60">
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-white transition-colors">{siteConfig.email}</a>
+                <a href={`tel:${siteConfig.phone}`} className="hover:text-white transition-colors">{siteConfig.phone}</a>
+                <p>{siteConfig.address}</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-16 pt-8 border-t border-white/10 text-center text-white/30 text-sm">
+            © {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
