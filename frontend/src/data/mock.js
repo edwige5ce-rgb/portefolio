@@ -27,6 +27,39 @@ export const heroContent = {
 export const projects = [
   {
     id: 1,
+    slug: "suite-horizon",
+    title: "Sérénité",
+    subtitle: "Suite Hôtelière",
+    location: "Côte d'Azur, France",
+    year: "2026",
+    category: "Hôtellerie",
+    heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/vj3dk2qp_Enscape_2026-01-26-14-36-48.png",
+    description: "Une suite hôtelière où le luxe rencontre la nature. Les boiseries chaleureuses dialoguent avec un mur de pierre brute spectaculaire, tandis que les baies vitrées ouvrent sur un balcon végétalisé baigné de lumière dorée.",
+    features: [
+      {
+        title: "Mur Pierre Naturelle",
+        description: "Formation rocheuse authentique intégrée, pièce maîtresse sculpturale",
+        stat: "Unique"
+      },
+      {
+        title: "Boiseries Chêne",
+        description: "Panneaux muraux en chêne miel avec veinage naturel",
+        stat: "Premium"
+      },
+      {
+        title: "Balcon Végétalisé",
+        description: "Terrasse privative avec jardin suspendu luxuriant",
+        stat: "25 m²"
+      }
+    ],
+    gallery: [
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/vj3dk2qp_Enscape_2026-01-26-14-36-48.png"
+    ],
+    colors: ["#D4A574", "#8B7355", "#E85D04", "#2D3A2E"],
+    services: ["Design d'intérieur", "Aménagement hôtelier", "Terrasse", "Éclairage"]
+  },
+  {
+    id: 2,
     slug: "maison-edouard",
     title: "Édouard",
     subtitle: "Brasserie & Boulangerie",
