@@ -283,7 +283,7 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/4myq3y0d_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180558.png",
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/3kvgk9a0_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180613.png"
     ],
-    colors: ["#D4C4A8", "#8B9A7D", "#F5F5F0", "#3D3D3D"],
+    colors: ["#1F3A93", "#8B9A7D", "#F5F5F0", "#3D3D3D"],
     materials: ["Épicéa local", "Polycarbonate", "Tissu poreux", "Acier corten"],
     services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   }
