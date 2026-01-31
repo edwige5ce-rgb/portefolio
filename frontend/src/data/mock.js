@@ -292,14 +292,14 @@ export const projects = [
 export const services = [
   {
     title: "Space Planning",
-    description: "Conception et optimisation des espaces"
+    description: "Conception et optimisation des espaces, visualisation et Immersion (3D/AR/VR)"
   },
   {
-    title: "3D Visualization",
-    description: "Sketchup & Enscape"
+    title: "Collaboration Asynchrone",
+    description: "Simplifier les workflows entre designers, ingénieurs, clients. Mesure d'impact sur les décisions design et vente."
   },
   {
-    title: "Matériaux & Détails",
-    description: "Sélection et mise en œuvre"
+    title: "Data et AI",
+    description: "Structurer et exploiter les données design et usage. AI générative pour optimisation des plans et scénarios."
   }
 ];
