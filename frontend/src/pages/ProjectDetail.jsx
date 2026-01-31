@@ -151,55 +151,54 @@ const ProjectDetail = () => {
       {/* Features - Apple Style with Image */}
       <section className="py-32 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight">
               Les détails qui font la différence.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
             <div className="lg:col-span-7">
               <img
-                src={project.gallery?.[1] || project.heroImage}
+                src={project.gallery?.[Math.min(1, project.gallery.length - 1)] || project.heroImage}
                 alt={project.title}
                 className="w-full h-auto rounded-2xl"
               />
             </div>
 
-            <div className="lg:col-span-5 space-y-12">
+            <div className="lg:col-span-5 space-y-8">
               {project.features.map((feature, index) => (
                 <div key={index}>
-                  <p className="text-white/60 text-sm mb-2">{feature.title}</p>
-                  <p className="text-5xl md:text-6xl font-semibold" style={{ color: dominantColor }}>
+                  <p className="text-white/50 text-xs mb-1">{feature.title}</p>
+                  <p className="text-3xl md:text-4xl font-semibold" style={{ color: dominantColor }}>
                     {feature.stat}
                   </p>
                 </div>
               ))}
 
-              <div className="pt-8 border-t border-white/10">
-                <p className="text-white/60 text-sm mb-4">Palette couleurs</p>
-                <div className="flex flex-wrap gap-4">
+              <div className="pt-6 border-t border-white/10">
+                <p className="text-white/50 text-xs mb-3">Palette couleurs</p>
+                <div className="flex flex-wrap gap-3">
                   {project.colors.map((color, index) => (
                     <div key={index} className="flex items-center gap-2">
                       <div 
-                        className="w-8 h-8 rounded-full shadow-lg"
+                        className="w-6 h-6 rounded-full shadow-lg"
                         style={{ backgroundColor: color }}
                       />
-                      <span className="text-white/40 text-xs font-mono">{color}</span>
+                      <span className="text-white/40 text-[10px] font-mono">{color}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Materials */}
               {project.materials && (
-                <div className="pt-6">
-                  <p className="text-white/60 text-sm mb-4">Matériaux</p>
+                <div className="pt-4">
+                  <p className="text-white/50 text-xs mb-3">Matériaux</p>
                   <div className="flex flex-wrap gap-2">
                     {project.materials.map((material, index) => (
                       <span 
                         key={index}
-                        className="px-3 py-1.5 bg-white/10 text-white/70 text-sm rounded-full"
+                        className="px-2 py-1 bg-white/10 text-white/60 text-xs rounded-full"
                       >
                         {material}
                       </span>
@@ -210,11 +209,11 @@ const ProjectDetail = () => {
             </div>
           </div>
 
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-white/50 text-base md:text-lg leading-relaxed">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-white/40 text-sm leading-relaxed">
               {project.features.map((f, i) => (
                 <span key={i}>
-                  <span className="text-white">{f.title}</span> — {f.description}
+                  <span className="text-white/60">{f.title}</span> — {f.description}
                   {i < project.features.length - 1 ? '. ' : '.'}
                 </span>
               ))}
