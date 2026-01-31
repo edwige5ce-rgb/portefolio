@@ -12,8 +12,12 @@ const ProjectDetail = () => {
   const currentIndex = projects.findIndex(p => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
+  // Get dominant color from project
+  const dominantColor = project?.colors?.[0] || '#ffffff';
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    sectionsRef.current = [];
   }, [slug]);
 
   useEffect(() => {
@@ -82,76 +86,110 @@ const ProjectDetail = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-end overflow-hidden">
-        <div 
-          className="absolute inset-0 transition-transform duration-100"
-          style={{ transform: `scale(${1 + scrollY * 0.0002})` }}
-        >
-          <img
-            src={project.heroImage}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+      {/* Hero Section - Apple Style */}
+      <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          {/* Category Label */}
+          <p 
+            className="text-sm tracking-[0.2em] uppercase mb-6 animate-fadeInUp"
+            style={{ color: dominantColor }}
+          >
+            {project.category}
+          </p>
+          
+          {/* Project Title - Large */}
+          <h1 
+            className="text-7xl md:text-8xl lg:text-9xl font-semibold tracking-tight leading-none mb-6 animate-fadeInUp animation-delay-200"
+            style={{ color: dominantColor }}
+          >
+            {project.title}
+          </h1>
+          
+          {/* Subtitle */}
+          <p className="text-2xl md:text-3xl text-white/70 font-light mb-4 animate-fadeInUp animation-delay-400">
+            {project.subtitle}
+          </p>
+          
+          {/* Year */}
+          <p className="text-white/40 text-sm tracking-wider animate-fadeInUp animation-delay-400">
+            {project.year}
+          </p>
         </div>
 
-        <div className="relative z-10 w-full pb-20 px-6 lg:px-12">
-          <div className="max-w-[1400px] mx-auto">
-            <p className="text-white/50 text-sm tracking-[0.2em] uppercase mb-4 animate-fadeInUp">
-              {project.category} — {project.year}
-            </p>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-semibold text-white tracking-tight leading-none mb-4 animate-fadeInUp animation-delay-200">
-              {project.title}
-            </h1>
-            <p className="text-2xl md:text-3xl text-white/70 font-light animate-fadeInUp animation-delay-400">
-              {project.subtitle}
-            </p>
+        {/* Description - Centered */}
+        <div className="max-w-3xl mx-auto text-center mb-20 animate-fadeInUp animation-delay-600">
+          <p className="text-lg md:text-xl text-white/60 leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Hero Image - Floating */}
+        <div className="w-full max-w-5xl mx-auto animate-fadeInUp animation-delay-800">
+          <div className="relative">
+            <img
+              src={project.heroImage}
+              alt={project.title}
+              className="w-full h-auto rounded-2xl shadow-2xl"
+              style={{ 
+                boxShadow: `0 50px 100px -20px ${dominantColor}20`
+              }}
+            />
           </div>
         </div>
       </section>
 
-      {/* Project Info */}
+      {/* Project Info Cards */}
       <section className="py-32 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-            <div ref={addToRefs} className="reveal">
-              <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-6">Description</p>
-              <p className="text-2xl md:text-3xl text-white leading-relaxed">
-                {project.description}
-              </p>
+          <div ref={addToRefs} className="reveal grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Location */}
+            <div className="bg-white/5 rounded-2xl p-8">
+              <p className="text-white/40 text-xs tracking-[0.2em] uppercase mb-2">Localisation</p>
+              <p className="text-white text-xl">{project.location}</p>
             </div>
-            <div ref={addToRefs} className="reveal">
-              <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-2">Localisation</p>
-                  <p className="text-white text-lg">{project.location}</p>
-                </div>
-                <div>
-                  <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-2">Année</p>
-                  <p className="text-white text-lg">{project.year}</p>
-                </div>
-                <div className="col-span-2">
-                  <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-3">Services</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.services.map((service, i) => (
-                      <span key={i} className="px-4 py-2 bg-white/10 text-white/80 text-sm rounded-full">
-                        {service}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+            
+            {/* Year */}
+            <div className="bg-white/5 rounded-2xl p-8">
+              <p className="text-white/40 text-xs tracking-[0.2em] uppercase mb-2">Année</p>
+              <p className="text-white text-xl">{project.year}</p>
+            </div>
+            
+            {/* Category */}
+            <div className="bg-white/5 rounded-2xl p-8">
+              <p className="text-white/40 text-xs tracking-[0.2em] uppercase mb-2">Type</p>
+              <p className="text-white text-xl">{project.category}</p>
+            </div>
+          </div>
+
+          {/* Services */}
+          <div ref={addToRefs} className="reveal mt-8">
+            <div className="bg-white/5 rounded-2xl p-8">
+              <p className="text-white/40 text-xs tracking-[0.2em] uppercase mb-4">Services</p>
+              <div className="flex flex-wrap gap-3">
+                {project.services.map((service, i) => (
+                  <span 
+                    key={i} 
+                    className="px-4 py-2 bg-white/10 text-white/80 text-sm rounded-full"
+                  >
+                    {service}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features - Apple Style Cards */}
+      {/* Features - Apple Style */}
       <section className="py-32 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div ref={addToRefs} className="reveal mb-20">
-            <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">Caractéristiques</p>
+          <div ref={addToRefs} className="reveal text-center mb-20">
+            <p 
+              className="text-sm tracking-[0.2em] uppercase mb-4"
+              style={{ color: dominantColor }}
+            >
+              Caractéristiques
+            </p>
             <h2 className="text-4xl md:text-6xl font-semibold text-white tracking-tight">
               Les détails qui<br/>font la différence.
             </h2>
@@ -162,9 +200,14 @@ const ProjectDetail = () => {
               <div 
                 key={index} 
                 ref={addToRefs}
-                className="reveal bg-white/5 rounded-3xl p-10 hover:bg-white/10 transition-colors duration-300"
+                className="reveal text-center"
               >
-                <p className="text-5xl md:text-6xl font-bold text-white mb-4">{feature.stat}</p>
+                <p 
+                  className="text-6xl md:text-7xl font-bold mb-4"
+                  style={{ color: dominantColor }}
+                >
+                  {feature.stat}
+                </p>
                 <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
                 <p className="text-white/50 leading-relaxed">{feature.description}</p>
               </div>
@@ -176,18 +219,23 @@ const ProjectDetail = () => {
       {/* Color Palette */}
       <section className="py-32 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div ref={addToRefs} className="reveal mb-16">
-            <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">Palette</p>
+          <div ref={addToRefs} className="reveal text-center mb-16">
+            <p 
+              className="text-sm tracking-[0.2em] uppercase mb-4"
+              style={{ color: dominantColor }}
+            >
+              Palette
+            </p>
             <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
               Couleurs du projet
             </h2>
           </div>
 
-          <div ref={addToRefs} className="reveal flex flex-wrap gap-6">
+          <div ref={addToRefs} className="reveal flex justify-center flex-wrap gap-8">
             {project.colors.map((color, index) => (
               <div key={index} className="flex flex-col items-center gap-3">
                 <div 
-                  className="w-24 h-24 md:w-32 md:h-32 rounded-2xl shadow-lg"
+                  className="w-20 h-20 md:w-28 md:h-28 rounded-full shadow-lg transition-transform duration-300 hover:scale-110"
                   style={{ backgroundColor: color }}
                 />
                 <span className="text-white/40 text-sm font-mono">{color}</span>
@@ -201,8 +249,13 @@ const ProjectDetail = () => {
       {project.gallery && project.gallery.length > 0 && (
         <section className="py-32 bg-[#0a0a0a]">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-            <div ref={addToRefs} className="reveal mb-16">
-              <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">Galerie</p>
+            <div ref={addToRefs} className="reveal text-center mb-16">
+              <p 
+                className="text-sm tracking-[0.2em] uppercase mb-4"
+                style={{ color: dominantColor }}
+              >
+                Galerie
+              </p>
               <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
                 Vues du projet
               </h2>
@@ -230,19 +283,18 @@ const ProjectDetail = () => {
       {/* Next Project */}
       <section className="py-32 bg-black border-t border-white/10">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <Link to={`/projet/${nextProject.slug}`} className="group block">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-              <div>
-                <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">Projet suivant</p>
-                <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight group-hover:text-white/80 transition-colors">
-                  {nextProject.title}
-                </h2>
-                <p className="text-xl text-white/50 mt-2">{nextProject.subtitle}</p>
-              </div>
-              <div className="flex items-center gap-3 text-white group-hover:gap-5 transition-all duration-300">
-                <span className="font-medium">Voir le projet</span>
-                <ArrowRight className="w-6 h-6" />
-              </div>
+          <Link to={`/projet/${nextProject.slug}`} className="group block text-center">
+            <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-6">Projet suivant</p>
+            <h2 
+              className="text-6xl md:text-8xl font-semibold tracking-tight mb-4 transition-colors duration-300"
+              style={{ color: nextProject.colors?.[0] || '#ffffff' }}
+            >
+              {nextProject.title}
+            </h2>
+            <p className="text-xl text-white/50 mb-8">{nextProject.subtitle}</p>
+            <div className="inline-flex items-center gap-3 text-white group-hover:gap-5 transition-all duration-300">
+              <span className="font-medium">Voir le projet</span>
+              <ArrowRight className="w-6 h-6" />
             </div>
           </Link>
         </div>
