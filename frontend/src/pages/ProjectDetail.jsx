@@ -252,35 +252,80 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Gallery - Apple Carousel Style */}
       {project.gallery && project.gallery.length > 0 && (
-        <section className="py-32 bg-[#0a0a0a]">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-            <div ref={addToRefs} className="reveal text-center mb-16">
-              <p 
-                className="text-sm tracking-[0.2em] uppercase mb-4"
-                style={{ color: dominantColor }}
-              >
-                Galerie
-              </p>
+        <section className="py-32 bg-[#111]">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-12">
+            <div ref={addToRefs} className="reveal flex justify-between items-center">
               <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
-                Vues du projet
+                Points forts.
               </h2>
             </div>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {project.gallery.map((img, index) => (
+          {/* Carousel Container */}
+          <div className="relative">
+            <div 
+              ref={addToRefs}
+              className="reveal flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-6 lg:px-12 pb-8"
+              style={{ 
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                WebkitOverflowScrolling: 'touch'
+              }}
+            >
+              {project.gallery.map((img, index) => {
+                // Generate highlight text based on features or project info
+                const highlightTexts = [
+                  `${project.features[0]?.title || 'Design'}. ${project.features[0]?.description || project.description.slice(0, 80)}`,
+                  `${project.features[1]?.title || 'Matériaux'}. ${project.features[1]?.description || 'Sélection premium de matériaux nobles.'}`,
+                  `${project.features[2]?.title || 'Finitions'}. ${project.features[2]?.description || 'Attention aux détails et finitions haut de gamme.'}`,
+                  `${project.category}. ${project.subtitle} situé à ${project.location}.`,
+                  `Conception ${project.year}. Un projet alliant esthétique et fonctionnalité.`,
+                  `Space planning. Organisation optimale de l'espace pour un confort maximal.`,
+                  `Ambiance. Création d'une atmosphère unique et personnalisée.`,
+                  `Lumière. Mise en valeur des volumes par un éclairage étudié.`
+                ];
+                
+                return (
+                  <div 
+                    key={index}
+                    className="flex-shrink-0 snap-center first:pl-0 last:pr-0"
+                    style={{ width: 'min(600px, 80vw)' }}
+                  >
+                    <div className="relative rounded-3xl overflow-hidden bg-[#1a1a1a]">
+                      {/* Text Overlay */}
+                      <div className="absolute top-0 left-0 right-0 z-10 p-6">
+                        <p className="text-white text-sm md:text-base leading-relaxed max-w-md">
+                          {highlightTexts[index % highlightTexts.length]}
+                        </p>
+                      </div>
+                      
+                      {/* Image */}
+                      <div className="aspect-[4/3]">
+                        <img
+                          src={img}
+                          alt={`${project.title} - Vue ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                        {/* Gradient overlay for text readability */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent" />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Navigation Dots */}
+            <div className="flex justify-center gap-2 mt-8">
+              {project.gallery.map((_, index) => (
                 <div 
-                  key={index} 
-                  ref={addToRefs}
-                  className={`reveal overflow-hidden rounded-2xl ${index === 0 ? 'md:col-span-2' : ''}`}
-                >
-                  <img
-                    src={img}
-                    alt={`${project.title} - Vue ${index + 1}`}
-                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
+                  key={index}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === 0 ? 'w-8 bg-white' : 'w-2 bg-white/30'
+                  }`}
+                />
               ))}
             </div>
           </div>
