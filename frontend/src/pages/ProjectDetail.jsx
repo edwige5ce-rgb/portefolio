@@ -6,6 +6,8 @@ import { projects, siteConfig } from '../data/mock';
 const ProjectDetail = () => {
   const { slug } = useParams();
   const [scrollY, setScrollY] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const carouselRef = useRef(null);
   
   const project = projects.find(p => p.slug === slug);
   const currentIndex = projects.findIndex(p => p.slug === slug);
