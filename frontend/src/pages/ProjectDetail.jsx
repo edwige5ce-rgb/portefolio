@@ -309,7 +309,7 @@ const ProjectDetail = () => {
 
             {/* Navigation Dots */}
             <div className="flex justify-center gap-2 mt-8">
-              {project.gallery.map((_, index) => (
+              {uniqueGalleryImages.map((_, index) => (
                 <button
                   onClick={() => {
                     if (carouselRef.current) {
