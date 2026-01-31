@@ -19,7 +19,7 @@ export const siteConfig = {
 
 export const heroContent = {
   title: "Atmosphères",
-  subtitle: "Conception de systèmes spatiaux et produit intelligent.",
+  subtitle: "Architecture & Technology Design",
   description: "L'architecture et objet technologique ne font qu'un.",
   scrollText: "Défiler pour explorer"
 };
