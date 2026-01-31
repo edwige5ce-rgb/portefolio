@@ -243,6 +243,7 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/cmghhf49_Enscape_2025-10-14-11-47-25.png"
     ],
     colors: ["#8B7355", "#F5F0E6", "#2C1810", "#D4AF37"],
+    materials: ["Teck massif", "Cuir ivoire", "Laiton doré", "Verre teinté"],
     services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
