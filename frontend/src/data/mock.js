@@ -255,7 +255,7 @@ export const projects = [
     year: "2025",
     category: "Retail Design",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/4myq3y0d_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180558.png",
-    description: "Le projet consiste en un capteur de rosée léger et minimaliste, intégré à une structure poteau poutre utilisant des matériaux simples et un tissu poreux pour capter l'humidité du brouillard, laquelle est ensuite transformée en eau. Cette eau est produite principalement la nuit, stockée dans un réservoir intégré, puis redistribuée via un système d'irrigation goutte-à-goutte afin de soutenir une végétation à la fois sauvage et maîtrisée. Implanté sur des pentes raides au sein d'un environnement vallonné et exposé aux incendies, la cabane collectent en moyenne 350 litres d'eau par jour, dont 290 litres sont dédiés au renforcement de la biodiversité locale.",
+    description: "Capteur de rosée minimaliste captant l'humidité du brouillard, stockant l'eau puis la redistribuant par goutte-à-goutte pour renforcer la biodiversité sur pentes vallonnées exposées aux incendies.",
     features: [
       {
         title: "Capteur de Rosée",
