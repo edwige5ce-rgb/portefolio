@@ -44,12 +44,15 @@ const ProjectDetail = () => {
     `${project.features[0]?.title || 'Design'}. ${project.features[0]?.description || project.description.slice(0, 80)}`,
     `${project.features[1]?.title || 'Matériaux'}. ${project.features[1]?.description || 'Sélection premium de matériaux nobles.'}`,
     `${project.features[2]?.title || 'Finitions'}. ${project.features[2]?.description || 'Attention aux détails et finitions haut de gamme.'}`,
-    `${project.category}. ${project.subtitle} situé à ${project.location}.`,
-    `Conception ${project.year}. Un projet alliant esthétique et fonctionnalité.`,
-    `Space planning. Organisation optimale de l'espace pour un confort maximal.`,
-    `Ambiance. Création d'une atmosphère unique et personnalisée.`,
+    `${project.category}. ${project.subtitle} à ${project.location}.`,
+    `Conception ${project.year}. Alliant esthétique et fonctionnalité.`,
+    `Space planning. Organisation optimale pour un confort maximal.`,
+    `Ambiance. Une atmosphère unique et personnalisée.`,
     `Lumière. Mise en valeur des volumes par un éclairage étudié.`
   ];
+
+  // Filter unique images from gallery
+  const uniqueGalleryImages = project?.gallery ? [...new Set(project.gallery)] : [];
 
   return (
     <div className="bg-black min-h-screen">
