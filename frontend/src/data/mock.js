@@ -253,25 +253,29 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/4myq3y0d_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180558.png",
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/3kvgk9a0_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180613.png"
     ],
-    description: "Une architecture biophilique où le bois et la lumière naturelle créent un dialogue permanent avec la montagne. Ce refuge minimaliste offre une expérience immersive au cœur de la nature.",
+    description: "Le projet consiste en un capteur de rosée léger et minimaliste, intégré à une structure poteau poutre utilisant des matériaux simples et un tissu poreux pour capter l'humidité du brouillard, laquelle est ensuite transformée en eau. Cette eau est produite principalement la nuit, stockée dans un réservoir intégré, puis redistribuée via un système d'irrigation goutte-à-goutte afin de soutenir une végétation à la fois sauvage et maîtrisée. Implanté sur des pentes raides au sein d'un environnement vallonné et exposé aux incendies, la cabane collectent en moyenne 350 litres d'eau par jour, dont 290 litres sont dédiés au renforcement de la biodiversité locale.",
     features: [
       {
+        title: "Capteur de Rosée",
+        description: "Tissu poreux captant l'humidité du brouillard nocturne",
+        stat: "350 L/jour"
+      },
+      {
+        title: "Biodiversité",
+        description: "Irrigation goutte-à-goutte pour végétation sauvage et maîtrisée",
+        stat: "290 L"
+      },
+      {
         title: "Structure Bois",
-        description: "Ossature en épicéa local certifié, assemblages traditionnels",
+        description: "Ossature poteau poutre en matériaux simples et durables",
         stat: "100% Bois"
-      },
-      {
-        title: "Lumière Naturelle",
-        description: "Panneaux translucides en polycarbonate pour une diffusion optimale",
-        stat: "360°"
-      },
-      {
-        title: "Mezzanine",
-        description: "Espace de couchage suspendu avec vue panoramique",
-        stat: "12 m²"
       }
     ],
     gallery: [
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/p1sbig6b_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180706.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/8epmvmra_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180729.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/sj07vp3u_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180558.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zfmy5sk3_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180613.png",
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/4myq3y0d_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180558.png",
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/3kvgk9a0_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180613.png"
     ],
