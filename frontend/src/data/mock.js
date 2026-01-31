@@ -58,6 +58,7 @@ export const projects = [
         stat: "25 m²"
       }
     ],
+    materials: ["Chêne massif", "Pierre naturelle", "Verre trempé", "Lin naturel"],
     gallery: [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/vj3dk2qp_Enscape_2026-01-26-14-36-48.png",
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/gz4fo4ep_Enscape_2026-01-26-14-36-48.png",
