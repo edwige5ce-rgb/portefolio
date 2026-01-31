@@ -209,18 +209,56 @@ const ProjectDetail = () => {
       {project.gallery && project.gallery.length > 0 && (
         <section className="py-32 bg-[#111]">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-12">
-            <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
-              Points forts.
-            </h2>
+            <div className="flex justify-between items-center">
+              <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
+                Points forts.
+              </h2>
+              
+              {/* Navigation Arrows */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => {
+                    if (carouselRef.current) {
+                      const scrollAmount = carouselRef.current.offsetWidth * 0.6;
+                      carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                      setActiveSlide(prev => Math.max(0, prev - 1));
+                    }
+                  }}
+                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={() => {
+                    if (carouselRef.current) {
+                      const scrollAmount = carouselRef.current.offsetWidth * 0.6;
+                      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                      setActiveSlide(prev => Math.min(project.gallery.length - 1, prev + 1));
+                    }
+                  }}
+                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
           </div>
 
           <div className="relative">
             <div 
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-6 lg:px-12 pb-8"
+              ref={carouselRef}
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-6 lg:px-12 pb-8 cursor-grab active:cursor-grabbing"
               style={{ 
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
                 WebkitOverflowScrolling: 'touch'
+              }}
+              onScroll={(e) => {
+                const container = e.target;
+                const scrollLeft = container.scrollLeft;
+                const cardWidth = container.offsetWidth * 0.6;
+                const newActiveSlide = Math.round(scrollLeft / cardWidth);
+                setActiveSlide(newActiveSlide);
               }}
             >
               {project.gallery.map((img, index) => (
@@ -249,12 +287,20 @@ const ProjectDetail = () => {
               ))}
             </div>
 
+            {/* Navigation Dots */}
             <div className="flex justify-center gap-2 mt-8">
               {project.gallery.map((_, index) => (
-                <div 
+                <button
                   key={index}
+                  onClick={() => {
+                    if (carouselRef.current) {
+                      const cardWidth = carouselRef.current.querySelector('div')?.offsetWidth || 600;
+                      carouselRef.current.scrollTo({ left: index * (cardWidth + 24), behavior: 'smooth' });
+                      setActiveSlide(index);
+                    }
+                  }}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    index === 0 ? 'w-8 bg-white' : 'w-2 bg-white/30'
+                    index === activeSlide ? 'w-8 bg-white' : 'w-2 bg-white/30 hover:bg-white/50'
                   }`}
                 />
               ))}
