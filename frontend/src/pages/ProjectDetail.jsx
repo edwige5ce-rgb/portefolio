@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { projects, siteConfig } from '../data/mock';
@@ -6,7 +6,6 @@ import { projects, siteConfig } from '../data/mock';
 const ProjectDetail = () => {
   const { slug } = useParams();
   const [scrollY, setScrollY] = useState(0);
-  const sectionsRef = useRef([]);
   
   const project = projects.find(p => p.slug === slug);
   const currentIndex = projects.findIndex(p => p.slug === slug);
@@ -17,7 +16,6 @@ const ProjectDetail = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    sectionsRef.current = [];
   }, [slug]);
 
   useEffect(() => {
@@ -25,31 +23,6 @@ const ProjectDetail = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    sectionsRef.current.forEach((section) => {
-      if (section) observer.observe(section);
-    });
-
-    return () => observer.disconnect();
-  }, [slug]);
-
-  const addToRefs = (el) => {
-    if (el && !sectionsRef.current.includes(el)) {
-      sectionsRef.current.push(el);
-    }
-  };
 
   if (!project) {
     return (
@@ -63,6 +36,18 @@ const ProjectDetail = () => {
       </div>
     );
   }
+
+  // Generate highlight texts for gallery
+  const highlightTexts = [
+    `${project.features[0]?.title || 'Design'}. ${project.features[0]?.description || project.description.slice(0, 80)}`,
+    `${project.features[1]?.title || 'Matériaux'}. ${project.features[1]?.description || 'Sélection premium de matériaux nobles.'}`,
+    `${project.features[2]?.title || 'Finitions'}. ${project.features[2]?.description || 'Attention aux détails et finitions haut de gamme.'}`,
+    `${project.category}. ${project.subtitle} situé à ${project.location}.`,
+    `Conception ${project.year}. Un projet alliant esthétique et fonctionnalité.`,
+    `Space planning. Organisation optimale de l'espace pour un confort maximal.`,
+    `Ambiance. Création d'une atmosphère unique et personnalisée.`,
+    `Lumière. Mise en valeur des volumes par un éclairage étudié.`
+  ];
 
   return (
     <div className="bg-black min-h-screen">
@@ -89,7 +74,6 @@ const ProjectDetail = () => {
       {/* Hero Section - Apple Style */}
       <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
         <div className="text-center max-w-4xl mx-auto mb-16">
-          {/* Category Label */}
           <p 
             className="text-sm tracking-[0.2em] uppercase mb-6 animate-fadeInUp"
             style={{ color: dominantColor }}
@@ -97,7 +81,6 @@ const ProjectDetail = () => {
             {project.category}
           </p>
           
-          {/* Project Title - Large */}
           <h1 
             className="text-7xl md:text-8xl lg:text-9xl font-semibold tracking-tight leading-none mb-6 animate-fadeInUp animation-delay-200"
             style={{ color: dominantColor }}
@@ -105,72 +88,55 @@ const ProjectDetail = () => {
             {project.title}
           </h1>
           
-          {/* Subtitle */}
           <p className="text-2xl md:text-3xl text-white/70 font-light mb-4 animate-fadeInUp animation-delay-400">
             {project.subtitle}
           </p>
           
-          {/* Year */}
           <p className="text-white/40 text-sm tracking-wider animate-fadeInUp animation-delay-400">
             {project.year}
           </p>
         </div>
 
-        {/* Description - Centered */}
         <div className="max-w-3xl mx-auto text-center mb-20 animate-fadeInUp animation-delay-600">
           <p className="text-lg md:text-xl text-white/60 leading-relaxed">
             {project.description}
           </p>
         </div>
 
-        {/* Hero Image - Floating */}
         <div className="w-full max-w-5xl mx-auto animate-fadeInUp animation-delay-800">
-          <div className="relative">
-            <img
-              src={project.heroImage}
-              alt={project.title}
-              className="w-full h-auto rounded-2xl shadow-2xl"
-              style={{ 
-                boxShadow: `0 50px 100px -20px ${dominantColor}20`
-              }}
-            />
-          </div>
+          <img
+            src={project.heroImage}
+            alt={project.title}
+            className="w-full h-auto rounded-2xl shadow-2xl"
+            style={{ boxShadow: `0 50px 100px -20px ${dominantColor}30` }}
+          />
         </div>
       </section>
 
       {/* Project Info Cards */}
       <section className="py-32 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div ref={addToRefs} className="reveal grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Location */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white/5 rounded-2xl p-8">
               <p className="text-white/40 text-xs tracking-[0.2em] uppercase mb-2">Localisation</p>
               <p className="text-white text-xl">{project.location}</p>
             </div>
-            
-            {/* Year */}
             <div className="bg-white/5 rounded-2xl p-8">
               <p className="text-white/40 text-xs tracking-[0.2em] uppercase mb-2">Année</p>
               <p className="text-white text-xl">{project.year}</p>
             </div>
-            
-            {/* Category */}
             <div className="bg-white/5 rounded-2xl p-8">
               <p className="text-white/40 text-xs tracking-[0.2em] uppercase mb-2">Type</p>
               <p className="text-white text-xl">{project.category}</p>
             </div>
           </div>
 
-          {/* Services */}
-          <div ref={addToRefs} className="reveal mt-8">
+          <div className="mt-8">
             <div className="bg-white/5 rounded-2xl p-8">
               <p className="text-white/40 text-xs tracking-[0.2em] uppercase mb-4">Services</p>
               <div className="flex flex-wrap gap-3">
                 {project.services.map((service, i) => (
-                  <span 
-                    key={i} 
-                    className="px-4 py-2 bg-white/10 text-white/80 text-sm rounded-full"
-                  >
+                  <span key={i} className="px-4 py-2 bg-white/10 text-white/80 text-sm rounded-full">
                     {service}
                   </span>
                 ))}
@@ -183,63 +149,48 @@ const ProjectDetail = () => {
       {/* Features - Apple Style with Image */}
       <section className="py-32 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          {/* Title */}
-          <div ref={addToRefs} className="reveal text-center mb-20">
+          <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight">
               Les détails qui font la différence.
             </h2>
           </div>
 
-          {/* Image + Features Layout */}
-          <div className="relative mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Main Image */}
-              <div ref={addToRefs} className="reveal lg:col-span-7">
-                <img
-                  src={project.gallery?.[1] || project.heroImage}
-                  alt={project.title}
-                  className="w-full h-auto rounded-2xl"
-                />
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+            <div className="lg:col-span-7">
+              <img
+                src={project.gallery?.[1] || project.heroImage}
+                alt={project.title}
+                className="w-full h-auto rounded-2xl"
+              />
+            </div>
 
-              {/* Features on the right */}
-              <div className="lg:col-span-5 space-y-12">
-                {project.features.map((feature, index) => (
-                  <div 
-                    key={index} 
-                    ref={addToRefs}
-                    className="reveal"
-                  >
-                    <p className="text-white/60 text-sm mb-2">{feature.title}</p>
-                    <p 
-                      className="text-5xl md:text-6xl font-semibold"
-                      style={{ color: dominantColor }}
-                    >
-                      {feature.stat}
-                    </p>
-                  </div>
-                ))}
+            <div className="lg:col-span-5 space-y-12">
+              {project.features.map((feature, index) => (
+                <div key={index}>
+                  <p className="text-white/60 text-sm mb-2">{feature.title}</p>
+                  <p className="text-5xl md:text-6xl font-semibold" style={{ color: dominantColor }}>
+                    {feature.stat}
+                  </p>
+                </div>
+              ))}
 
-                {/* Color Palette inline */}
-                <div ref={addToRefs} className="reveal pt-8">
-                  <p className="text-white/60 text-sm mb-4">Palette couleurs</p>
-                  <div className="flex gap-3">
-                    {project.colors.map((color, index) => (
-                      <div 
-                        key={index} 
-                        className="w-10 h-10 rounded-full shadow-lg"
-                        style={{ backgroundColor: color }}
-                        title={color}
-                      />
-                    ))}
-                  </div>
+              <div className="pt-8">
+                <p className="text-white/60 text-sm mb-4">Palette couleurs</p>
+                <div className="flex gap-3">
+                  {project.colors.map((color, index) => (
+                    <div 
+                      key={index} 
+                      className="w-10 h-10 rounded-full shadow-lg"
+                      style={{ backgroundColor: color }}
+                      title={color}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Description at bottom */}
-          <div ref={addToRefs} className="reveal max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             <p className="text-white/50 text-base md:text-lg leading-relaxed">
               {project.features.map((f, i) => (
                 <span key={i}>
@@ -256,68 +207,46 @@ const ProjectDetail = () => {
       {project.gallery && project.gallery.length > 0 && (
         <section className="py-32 bg-[#111]">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-12">
-            <div ref={addToRefs} className="reveal flex justify-between items-center">
-              <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
-                Points forts.
-              </h2>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
+              Points forts.
+            </h2>
           </div>
 
-          {/* Carousel Container */}
           <div className="relative">
             <div 
-              ref={addToRefs}
-              className="reveal flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-6 lg:px-12 pb-8"
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-6 lg:px-12 pb-8"
               style={{ 
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
                 WebkitOverflowScrolling: 'touch'
               }}
             >
-              {project.gallery.map((img, index) => {
-                // Generate highlight text based on features or project info
-                const highlightTexts = [
-                  `${project.features[0]?.title || 'Design'}. ${project.features[0]?.description || project.description.slice(0, 80)}`,
-                  `${project.features[1]?.title || 'Matériaux'}. ${project.features[1]?.description || 'Sélection premium de matériaux nobles.'}`,
-                  `${project.features[2]?.title || 'Finitions'}. ${project.features[2]?.description || 'Attention aux détails et finitions haut de gamme.'}`,
-                  `${project.category}. ${project.subtitle} situé à ${project.location}.`,
-                  `Conception ${project.year}. Un projet alliant esthétique et fonctionnalité.`,
-                  `Space planning. Organisation optimale de l'espace pour un confort maximal.`,
-                  `Ambiance. Création d'une atmosphère unique et personnalisée.`,
-                  `Lumière. Mise en valeur des volumes par un éclairage étudié.`
-                ];
-                
-                return (
-                  <div 
-                    key={index}
-                    className="flex-shrink-0 snap-center first:pl-0 last:pr-0"
-                    style={{ width: 'min(600px, 80vw)' }}
-                  >
-                    <div className="relative rounded-3xl overflow-hidden bg-[#1a1a1a]">
-                      {/* Text Overlay */}
-                      <div className="absolute top-0 left-0 right-0 z-10 p-6">
-                        <p className="text-white text-sm md:text-base leading-relaxed max-w-md">
-                          {highlightTexts[index % highlightTexts.length]}
-                        </p>
-                      </div>
-                      
-                      {/* Image */}
-                      <div className="aspect-[4/3]">
-                        <img
-                          src={img}
-                          alt={`${project.title} - Vue ${index + 1}`}
-                          className="w-full h-full object-cover"
-                        />
-                        {/* Gradient overlay for text readability */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent" />
-                      </div>
+              {project.gallery.map((img, index) => (
+                <div 
+                  key={index}
+                  className="flex-shrink-0 snap-center"
+                  style={{ width: 'min(600px, 80vw)' }}
+                >
+                  <div className="relative rounded-3xl overflow-hidden bg-[#1a1a1a]">
+                    <div className="absolute top-0 left-0 right-0 z-10 p-6">
+                      <p className="text-white text-sm md:text-base leading-relaxed max-w-md">
+                        {highlightTexts[index % highlightTexts.length]}
+                      </p>
+                    </div>
+                    
+                    <div className="aspect-[4/3] relative">
+                      <img
+                        src={img}
+                        alt={`${project.title} - Vue ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
 
-            {/* Navigation Dots */}
             <div className="flex justify-center gap-2 mt-8">
               {project.gallery.map((_, index) => (
                 <div 
