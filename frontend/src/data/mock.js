@@ -24,15 +24,21 @@ export const heroContent = {
   scrollText: "Défiler pour explorer"
 };
 
+export const aboutContent = {
+  years: "8+",
+  yearsLabel: "Années d'expérience en design d'intérieur",
+  philosophy: "Nous croyons que le design d'intérieur est de concevoir des systèmes spatiaux où l'architecture et objets technologiques ne font qu'un."
+};
+
 export const projects = [
   {
     id: 1,
-    slug: "suite-horizon",
+    slug: "suite-serenite",
     title: "Sérénité",
     subtitle: "Suite Hôtelière",
     location: "Côte d'Azur, France",
     year: "2026",
-    category: "Hôtellerie",
+    category: "Interior Design",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/vj3dk2qp_Enscape_2026-01-26-14-36-48.png",
     description: "Une suite hôtelière où le luxe rencontre la nature. Les boiseries chaleureuses dialoguent avec un mur de pierre brute spectaculaire, tandis que les baies vitrées ouvrent sur un balcon végétalisé baigné de lumière dorée.",
     features: [
@@ -61,7 +67,7 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/eopfubdz_Enscape_2026-01-26-15-41-15.png"
     ],
     colors: ["#D4A574", "#8B7355", "#E85D04", "#2D3A2E"],
-    services: ["Design d'intérieur", "Aménagement hôtelier", "Terrasse", "Éclairage"]
+    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 2,
@@ -70,7 +76,7 @@ export const projects = [
     subtitle: "Brasserie & Boulangerie",
     location: "Bruxelles, Belgique",
     year: "2025",
-    category: "Commercial",
+    category: "Retail Design",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/70jiw4uo_Enscape_2025-01-16-13-59-02.png",
     description: "Maison Édouard réinvente la brasserie traditionnelle belge. Les murs vert sapin dialoguent avec les banquettes en cuir cognac et les boiseries chaleureuses, créant une atmosphère à la fois intemporelle et contemporaine.",
     features: [
@@ -94,16 +100,16 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/70jiw4uo_Enscape_2025-01-16-13-59-02.png"
     ],
     colors: ["#2D4A3E", "#C4783A", "#D4A574", "#F5F0E6"],
-    services: ["Design d'intérieur", "Mobilier sur mesure", "Signalétique", "Éclairage"]
+    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
-    id: 2,
+    id: 3,
     slug: "boulangerie-lulu",
     title: "Lulu",
     subtitle: "Boulangerie & Café",
     location: "Bruxelles, Belgique",
     year: "2024",
-    category: "Commercial",
+    category: "Retail Design",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/mpdt9l6i_VUE%20ENSEMBLE.png",
     description: "Un espace gourmand où l'élégance parisienne rencontre la chaleur belge. Le sol en damier noir et blanc dialogue avec les boiseries claires et les accents de bleu profond.",
     features: [
@@ -127,12 +133,12 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/mpdt9l6i_VUE%20ENSEMBLE.png"
     ],
     colors: ["#1a1a1a", "#f5f5f0", "#2B4A6F", "#C9A86C"],
-    services: ["Design d'intérieur", "Mobilier sur mesure", "Éclairage", "Suivi de chantier"]
+    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
-    id: 3,
-    slug: "bureau-moderne",
-    title: "Horizon",
+    id: 4,
+    slug: "studio-da-tech",
+    title: "Studio DA & Tech",
     subtitle: "Espace de Coworking",
     location: "Paris, France",
     year: "2025",
@@ -165,16 +171,16 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/5uiziv6e_OFFICE%20ONE.png"
     ],
     colors: ["#5B7B7A", "#E8DFD0", "#C4A67C", "#F5F0E6"],
-    services: ["Design d'intérieur", "Aménagement bureau", "Mobilier", "Acoustique"]
+    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
-    id: 4,
-    slug: "bureau-sport",
-    title: "Victory",
+    id: 5,
+    slug: "bazar-savant",
+    title: "Bazar Savant",
     subtitle: "Agence Sportive",
     location: "Lyon, France",
     year: "2024",
-    category: "Bureau",
+    category: "Interior Design",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zvsicm76_ChatGPT%20Image%2025%20janv.%202026%2C%2016_29_26.png",
     description: "Un bureau d'agence sportive qui respire la passion du basketball. Le cuir noir, le parquet chevrons et les éléments décoratifs sportifs créent un univers immersif pour les athlètes et agents.",
     features: [
@@ -198,49 +204,16 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zvsicm76_ChatGPT%20Image%2025%20janv.%202026%2C%2016_29_26.png"
     ],
     colors: ["#1A1A1A", "#F5F5F5", "#C4A67C", "#E85D04"],
-    services: ["Design d'intérieur", "Mobilier sur mesure", "Décoration thématique"]
-  },
-  {
-    id: 5,
-    slug: "chalet-bois",
-    title: "Refuge",
-    subtitle: "Intérieur Montagne",
-    location: "Chamonix, France",
-    year: "2024",
-    category: "Résidentiel",
-    heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/cmghhf49_Enscape_2025-10-14-11-47-25.png",
-    description: "Un intérieur de chalet où le bois règne en maître. L'espace ouvert combine cuisine, salle à manger et coin lecture sous une mezzanine, créant une atmosphère chaleureuse et authentique.",
-    features: [
-      {
-        title: "Structure Bois",
-        description: "Ossature et finitions en bois massif, construction traditionnelle",
-        stat: "100% Bois"
-      },
-      {
-        title: "Mezzanine",
-        description: "Espace nuit suspendu avec garde-corps en bois ajouré",
-        stat: "15 m²"
-      },
-      {
-        title: "Coin Lecture",
-        description: "Banquette intégrée avec bibliothèque murale",
-        stat: "Cosy"
-      }
-    ],
-    gallery: [
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/cmghhf49_Enscape_2025-10-14-11-47-25.png"
-    ],
-    colors: ["#8B7355", "#D4C4A8", "#5C5C5C", "#F5F0E6"],
-    services: ["Architecture d'intérieur", "Mobilier intégré", "Aménagement montagne"]
+    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 6,
-    slug: "yacht-prive",
-    title: "Horizon",
+    slug: "n3-horizon",
+    title: "N.3 Horizon",
     subtitle: "Yacht de Luxe",
     location: "Monaco",
     year: "2024",
-    category: "Résidentiel",
+    category: "Nautical Design & Product Design",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/0uz16oqr_Enscape_2025-10-14-11-26-00.png",
     description: "L'intérieur de ce yacht incarne le summum du raffinement maritime. Les boiseries en teck, l'éclairage d'ambiance et les matériaux nobles créent un sanctuaire flottant.",
     features: [
@@ -261,19 +234,20 @@ export const projects = [
       }
     ],
     gallery: [
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/0uz16oqr_Enscape_2025-10-14-11-26-00.png"
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/0uz16oqr_Enscape_2025-10-14-11-26-00.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/cmghhf49_Enscape_2025-10-14-11-47-25.png"
     ],
     colors: ["#8B7355", "#F5F0E6", "#2C1810", "#D4AF37"],
-    services: ["Concept naval", "Aménagement intérieur", "Mobilier yacht", "Éclairage"]
+    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 7,
-    slug: "aframe-retreat",
+    slug: "altitude-aframe",
     title: "Altitude",
     subtitle: "Refuge A-Frame",
     location: "Alpes Suisses",
     year: "2025",
-    category: "Résidentiel",
+    category: "Retail Design",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/4myq3y0d_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180558.png",
     images: [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/4myq3y0d_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180558.png",
@@ -302,21 +276,21 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/3kvgk9a0_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180613.png"
     ],
     colors: ["#D4C4A8", "#8B9A7D", "#F5F5F0", "#3D3D3D"],
-    services: ["Architecture d'intérieur", "Design biophilique", "Mobilier intégré"]
+    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   }
 ];
 
 export const services = [
   {
-    title: "Design d'Intérieur",
-    description: "Conception complète de vos espaces"
+    title: "Space Planning",
+    description: "Conception et optimisation des espaces"
   },
   {
-    title: "Architecture",
-    description: "Du concept à la réalisation"
+    title: "3D Visualization",
+    description: "Sketchup & Enscape"
   },
   {
-    title: "Mobilier Sur Mesure",
-    description: "Pièces uniques pour espaces uniques"
+    title: "Matériaux & Détails",
+    description: "Sélection et mise en œuvre"
   }
 ];
