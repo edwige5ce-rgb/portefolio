@@ -4,7 +4,7 @@
 // ============================================
 
 export const siteConfig = {
-  name: "Architecture & Technology Design Studio",
+  name: "EDGS A&T Design",
   tagline: "Design d'Intérieur",
   description: "Créateur d'atmosphères uniques",
   email: "edgs.designer@outlook.fr",
