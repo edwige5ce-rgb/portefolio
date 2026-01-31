@@ -176,19 +176,37 @@ const ProjectDetail = () => {
                 </div>
               ))}
 
-              <div className="pt-8">
+              <div className="pt-8 border-t border-white/10">
                 <p className="text-white/60 text-sm mb-4">Palette couleurs</p>
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-4">
                   {project.colors.map((color, index) => (
-                    <div 
-                      key={index} 
-                      className="w-10 h-10 rounded-full shadow-lg"
-                      style={{ backgroundColor: color }}
-                      title={color}
-                    />
+                    <div key={index} className="flex items-center gap-2">
+                      <div 
+                        className="w-8 h-8 rounded-full shadow-lg"
+                        style={{ backgroundColor: color }}
+                      />
+                      <span className="text-white/40 text-xs font-mono">{color}</span>
+                    </div>
                   ))}
                 </div>
               </div>
+
+              {/* Materials */}
+              {project.materials && (
+                <div className="pt-6">
+                  <p className="text-white/60 text-sm mb-4">Matériaux</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.materials.map((material, index) => (
+                      <span 
+                        key={index}
+                        className="px-3 py-1.5 bg-white/10 text-white/70 text-sm rounded-full"
+                      >
+                        {material}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
