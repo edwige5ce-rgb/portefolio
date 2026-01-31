@@ -251,9 +251,9 @@ const ProjectDetail = () => {
                 <button
                   onClick={() => {
                     if (carouselRef.current) {
-                      const scrollAmount = carouselRef.current.offsetWidth * 0.6;
+                      const scrollAmount = carouselRef.current.offsetWidth * 0.68;
                       carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                      setActiveSlide(prev => Math.min(project.gallery.length - 1, prev + 1));
+                      setActiveSlide(prev => Math.min(uniqueGalleryImages.length - 1, prev + 1));
                     }
                   }}
                   className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
