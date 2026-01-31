@@ -126,10 +126,16 @@ const Home = () => {
 
                   {/* Content */}
                   <div className={`${index % 2 === 1 ? 'lg:order-1 lg:text-right' : ''}`}>
-                    <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">
+                    <p 
+                      className="text-sm tracking-[0.2em] uppercase mb-4"
+                      style={{ color: project.colors?.[0] || '#ffffff' }}
+                    >
                       {project.category} — {project.year}
                     </p>
-                    <h3 className="text-4xl md:text-6xl font-semibold text-white tracking-tight mb-4">
+                    <h3 
+                      className="text-4xl md:text-6xl font-semibold tracking-tight mb-4"
+                      style={{ color: project.colors?.[0] || '#ffffff' }}
+                    >
                       {project.title}
                     </h3>
                     <p className="text-xl text-white/60 mb-2">{project.subtitle}</p>
