@@ -274,6 +274,8 @@ export const projects = [
     gallery: [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/p1sbig6b_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180706.png",
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/8epmvmra_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180729.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/cw1hzfsy_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180706.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/yiuseojc_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180729.png",
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/sj07vp3u_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180558.png",
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zfmy5sk3_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180613.png",
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/4myq3y0d_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180558.png",
