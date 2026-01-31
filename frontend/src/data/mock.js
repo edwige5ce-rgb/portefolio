@@ -181,12 +181,12 @@ export const projects = [
     id: 5,
     slug: "bazar-savant",
     title: "Bazar Savant",
-    subtitle: "Agence Sportive",
+    subtitle: "Boutique d'Ensemblière",
     location: "Lyon, France",
     year: "2024",
     category: "Interior Design",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zvsicm76_ChatGPT%20Image%2025%20janv.%202026%2C%2016_29_26.png",
-    description: "Un bureau d'agence sportive qui respire la passion du basketball. Le cuir noir, le parquet chevrons et les éléments décoratifs sportifs créent un univers immersif pour les athlètes et agents.",
+    description: "Ancienne boutique d'ensemblière qui respire la passion du cinéma. Le cuir noir, le parquet chevrons et les techniques de rénovation médiévale créent un univers intemporel et immersif pour les artistes anachroniques.",
     features: [
       {
         title: "Espace Lounge",
@@ -194,20 +194,20 @@ export const projects = [
         stat: "VIP"
       },
       {
-        title: "Déco Sportive",
-        description: "Ballons signature et affiche iconique Michael Jordan",
+        title: "Déco Cinéma",
+        description: "Éléments décoratifs inspirés du 7ème art",
         stat: "Collector"
       },
       {
         title: "Parquet Chevrons",
-        description: "Chêne clair posé en chevrons, référence aux salles de sport",
+        description: "Chêne clair posé en chevrons, techniques médiévales",
         stat: "45 m²"
       }
     ],
     gallery: [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zvsicm76_ChatGPT%20Image%2025%20janv.%202026%2C%2016_29_26.png"
     ],
-    colors: ["#1A1A1A", "#F5F5F5", "#C4A67C", "#E85D04"],
+    colors: ["#C2452D", "#F5F5F5", "#C4A67C", "#E85D04"],
     materials: ["Cuir noir premium", "Chêne chevrons", "Verre fumé", "Acier brossé"],
     services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
