@@ -217,24 +217,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-40 bg-gradient-to-b from-black to-[#111]">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div ref={addToRefs} className="reveal">
-            <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight mb-8">
-              Prêt à créer<br/>votre atmosphère ?
-            </h2>
-            <Link 
-              to="/contact"
-              className="inline-flex items-center justify-center gap-3 bg-white text-black px-10 py-5 rounded-full font-medium text-lg hover:bg-white/90 transition-colors"
-            >
-              Nous contacter
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="py-16 bg-[#0a0a0a] border-t border-white/10">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
