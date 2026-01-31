@@ -185,9 +185,7 @@ const Home = () => {
                 Chaque espace<br/>raconte une histoire.
               </h2>
               <p className="text-xl text-white/60 leading-relaxed mb-8">
-                Nous croyons que le design d'intérieur est bien plus qu'une question d'esthétique. 
-                C'est l'art de créer des environnements qui inspirent, apaisent et transforment 
-                la façon dont les gens vivent et travaillent.
+                {aboutContent.philosophy}
               </p>
               <Link 
                 to="/contact"
@@ -207,8 +205,8 @@ const Home = () => {
                   />
                 </div>
                 <div className="absolute -bottom-8 -left-8 bg-white text-black p-8 rounded-2xl max-w-xs">
-                  <p className="text-4xl font-bold mb-2">10+</p>
-                  <p className="text-gray-600">Années d'expérience en design d'intérieur</p>
+                  <p className="text-4xl font-bold mb-2">{aboutContent.years}</p>
+                  <p className="text-gray-600">{aboutContent.yearsLabel}</p>
                 </div>
               </div>
             </div>
