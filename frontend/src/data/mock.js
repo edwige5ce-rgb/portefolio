@@ -208,6 +208,7 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zvsicm76_ChatGPT%20Image%2025%20janv.%202026%2C%2016_29_26.png"
     ],
     colors: ["#1A1A1A", "#F5F5F5", "#C4A67C", "#E85D04"],
+    materials: ["Cuir noir premium", "Chêne chevrons", "Verre fumé", "Acier brossé"],
     services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
