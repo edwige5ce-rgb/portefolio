@@ -174,6 +174,7 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/h3535nb6_OFFICE%20TWO.png"
     ],
     colors: ["#5B7B7A", "#E8DFD0", "#C4A67C", "#F5F0E6"],
+    materials: ["Chêne chevrons", "Panneaux acoustiques", "Métal noir", "Tissu bouclé"],
     services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
