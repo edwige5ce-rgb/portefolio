@@ -19,15 +19,15 @@ export const siteConfig = {
 
 export const heroContent = {
   title: "Atmosphères",
-  subtitle: "Design d'intérieur d'exception",
-  description: "Nous créons des espaces qui racontent votre histoire.",
+  subtitle: "Conception de systèmes spatiaux et produit intelligent.",
+  description: "L'architecture et objet technologique ne font qu'un.",
   scrollText: "Défiler pour explorer"
 };
 
 export const aboutContent = {
   years: "8+",
   yearsLabel: "Années d'expérience en design d'intérieur",
-  philosophy: "Nous croyons que le design d'intérieur est de concevoir des systèmes spatiaux où l'architecture et objets technologiques ne font qu'un."
+  philosophy: "L'objet prolonge l'architecture, la technologie amplifie l'expérience, les images racontent une vision claire."
 };
 
 export const projects = [
