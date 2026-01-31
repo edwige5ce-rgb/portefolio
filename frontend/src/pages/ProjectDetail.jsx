@@ -291,11 +291,10 @@ const ProjectDetail = () => {
             <div className="flex justify-center gap-2 mt-8">
               {project.gallery.map((_, index) => (
                 <button
-                  key={index}
                   onClick={() => {
                     if (carouselRef.current) {
-                      const cardWidth = carouselRef.current.querySelector('div')?.offsetWidth || 600;
-                      carouselRef.current.scrollTo({ left: index * (cardWidth + 24), behavior: 'smooth' });
+                      const cardWidth = carouselRef.current.offsetWidth * 0.68;
+                      carouselRef.current.scrollTo({ left: index * (cardWidth + 16), behavior: 'smooth' });
                       setActiveSlide(index);
                     }
                   }}
