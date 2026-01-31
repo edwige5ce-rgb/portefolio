@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ArrowRight, Instagram, Linkedin } from 'lucide-react';
-import { siteConfig, heroContent, projects, services } from '../data/mock';
+import { siteConfig, heroContent, projects, services, aboutContent } from '../data/mock';
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0);
