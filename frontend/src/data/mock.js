@@ -101,6 +101,7 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/70jiw4uo_Enscape_2025-01-16-13-59-02.png"
     ],
     colors: ["#2D4A3E", "#C4783A", "#D4A574", "#F5F0E6"],
+    materials: ["Cuir cognac", "Chêne vieilli", "Laiton brossé", "Peinture mate"],
     services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
