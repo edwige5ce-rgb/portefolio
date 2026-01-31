@@ -4,12 +4,12 @@
 // ============================================
 
 export const siteConfig = {
-  name: "STUDIO",
+  name: "Architecture & Technology Design Studio",
   tagline: "Design d'Intérieur",
   description: "Créateur d'atmosphères uniques",
-  email: "contact@studio-design.com",
-  phone: "+32 87 85 85 00",
-  address: "Bruxelles, Belgique",
+  email: "edgs.designer@outlook.fr",
+  phone: "+33 0665781033",
+  address: "Paris, France",
   social: {
     instagram: "#",
     linkedin: "#",
