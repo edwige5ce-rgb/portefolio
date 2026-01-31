@@ -103,7 +103,7 @@ const ProjectDetail = () => {
           </p>
         </div>
 
-        <div className="w-full max-w-5xl mx-auto animate-fadeInUp animation-delay-800">
+        <div className="w-full max-w-4xl mx-auto animate-fadeInUp animation-delay-800">
           <img
             src={project.heroImage}
             alt={project.title}
