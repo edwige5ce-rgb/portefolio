@@ -247,7 +247,7 @@ const ProjectDetail = () => {
           <div className="relative">
             <div 
               ref={carouselRef}
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-6 lg:px-12 pb-8 cursor-grab active:cursor-grabbing"
+              className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-[16%] pb-8 cursor-grab active:cursor-grabbing"
               style={{ 
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
@@ -256,7 +256,7 @@ const ProjectDetail = () => {
               onScroll={(e) => {
                 const container = e.target;
                 const scrollLeft = container.scrollLeft;
-                const cardWidth = container.offsetWidth * 0.6;
+                const cardWidth = container.offsetWidth * 0.68;
                 const newActiveSlide = Math.round(scrollLeft / cardWidth);
                 setActiveSlide(newActiveSlide);
               }}
@@ -265,16 +265,16 @@ const ProjectDetail = () => {
                 <div 
                   key={index}
                   className="flex-shrink-0 snap-center"
-                  style={{ width: 'min(600px, 80vw)' }}
+                  style={{ width: '68%' }}
                 >
                   <div className="relative rounded-3xl overflow-hidden bg-[#1a1a1a]">
-                    <div className="absolute top-0 left-0 right-0 z-10 p-6">
-                      <p className="text-white text-sm md:text-base leading-relaxed max-w-md">
+                    <div className="absolute top-0 left-0 right-0 z-10 p-6 md:p-8">
+                      <p className="text-white text-sm md:text-lg leading-relaxed max-w-lg">
                         {highlightTexts[index % highlightTexts.length]}
                       </p>
                     </div>
                     
-                    <div className="aspect-[4/3] relative">
+                    <div className="aspect-[16/10] relative">
                       <img
                         src={img}
                         alt={`${project.title} - Vue ${index + 1}`}
