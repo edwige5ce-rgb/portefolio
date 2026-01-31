@@ -168,7 +168,11 @@ export const projects = [
     ],
     gallery: [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/kjnw5yx8_OFFICE%20FOUR.png",
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/5uiziv6e_OFFICE%20ONE.png"
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/5uiziv6e_OFFICE%20ONE.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/jt3ekep2_OFFICE%20FOUR.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/xkjigw3a_OFFICE%20ONE.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/81h1k7mn_OFFICE%20THREE.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/h3535nb6_OFFICE%20TWO.png"
     ],
     colors: ["#5B7B7A", "#E8DFD0", "#C4A67C", "#F5F0E6"],
     services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
