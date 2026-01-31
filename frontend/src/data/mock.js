@@ -134,7 +134,7 @@ export const projects = [
     gallery: [
       "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/mpdt9l6i_VUE%20ENSEMBLE.png"
     ],
-    colors: ["#1a1a1a", "#f5f5f0", "#2B4A6F", "#C9A86C"],
+    colors: ["#0D1B2A", "#f5f5f0", "#2B4A6F", "#C9A86C"],
     materials: ["Marbre Carrara", "Chêne clair", "Laiton poli", "Carrelage artisanal"],
     services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
