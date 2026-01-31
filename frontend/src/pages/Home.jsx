@@ -89,18 +89,17 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Projects Showcase - Golden Ratio Cinematic */}
-      <section id="projets" className="py-24 bg-black">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-          <div ref={addToRefs} className="reveal mb-16">
+      {/* Projects Showcase - Apple Card Style */}
+      <section id="projets" className="py-32 bg-black">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div ref={addToRefs} className="reveal mb-20">
             <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">Portfolio</p>
             <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight">
               Nos Projets
             </h2>
           </div>
 
-          {/* Golden Ratio Grid: 1.618 proportion */}
-          <div className="space-y-6">
+          <div className="space-y-40">
             {projects.map((project, index) => (
               <Link 
                 to={`/projet/${project.slug}`} 
@@ -108,64 +107,43 @@ const Home = () => {
                 ref={addToRefs}
                 className="reveal block group"
               >
-                {/* Golden Ratio Layout: 61.8% image / 38.2% content */}
-                <div className="grid grid-cols-1 lg:grid-cols-[1.618fr_1fr] gap-6 items-stretch">
-                  {/* Image - Cinematic 2.35:1 aspect ratio */}
-                  <div className={`relative overflow-hidden rounded-2xl ${
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                }`}>
+                  {/* Image */}
+                  <div className={`relative overflow-hidden rounded-3xl ${
                     index % 2 === 1 ? 'lg:order-2' : ''
                   }`}>
-                    <div className="aspect-[2.35/1] overflow-hidden">
+                    <div className="aspect-[4/3] overflow-hidden">
                       <img
                         src={project.heroImage}
                         alt={project.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent opacity-100" />
-                    
-                    {/* Title overlay on image */}
-                    <div className="absolute bottom-0 left-0 p-8">
-                      <p 
-                        className="text-xs tracking-[0.2em] uppercase mb-2"
-                        style={{ color: project.colors?.[0] || '#ffffff' }}
-                      >
-                        {project.category}
-                      </p>
-                      <h3 
-                        className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight"
-                        style={{ color: project.colors?.[0] || '#ffffff' }}
-                      >
-                        {project.title}
-                      </h3>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
-                  {/* Content - 38.2% width (Golden ratio) */}
-                  <div className={`flex flex-col justify-between bg-white/5 rounded-2xl p-8 ${
-                    index % 2 === 1 ? 'lg:order-1' : ''
-                  }`}>
-                    <div>
-                      <p className="text-white/60 text-lg mb-2">{project.subtitle}</p>
-                      <p className="text-white/40 text-sm mb-6">{project.location} — {project.year}</p>
-                      <p className="text-white/50 text-sm leading-relaxed line-clamp-3">
-                        {project.description}
-                      </p>
-                    </div>
-                    
-                    <div className="flex items-center justify-between mt-6 pt-6 border-t border-white/10">
-                      <div className="flex gap-2">
-                        {project.colors?.slice(0, 4).map((color, i) => (
-                          <div 
-                            key={i}
-                            className="w-4 h-4 rounded-full"
-                            style={{ backgroundColor: color }}
-                          />
-                        ))}
-                      </div>
-                      <div className="flex items-center gap-2 text-white group-hover:gap-4 transition-all duration-300">
-                        <span className="text-sm font-medium">Voir</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </div>
+                  {/* Content */}
+                  <div className={`${index % 2 === 1 ? 'lg:order-1 lg:text-right' : ''}`}>
+                    <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">
+                      {project.category} — {project.year}
+                    </p>
+                    <h3 className="text-4xl md:text-6xl font-semibold text-white tracking-tight mb-4">
+                      {project.title}
+                    </h3>
+                    <p className="text-xl text-white/60 mb-2">{project.subtitle}</p>
+                    <p className="text-white/40 mb-8">{project.location}</p>
+                    <p className={`text-white/70 text-lg leading-relaxed mb-8 max-w-md ${
+                      index % 2 === 1 ? 'lg:ml-auto' : ''
+                    }`}>
+                      {project.description}
+                    </p>
+                    <div className={`flex items-center gap-2 text-white group-hover:gap-4 transition-all duration-300 ${
+                      index % 2 === 1 ? 'lg:justify-end' : ''
+                    }`}>
+                      <span className="text-sm font-medium">Voir le projet</span>
+                      <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
