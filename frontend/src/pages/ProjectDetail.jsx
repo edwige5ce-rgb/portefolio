@@ -239,7 +239,7 @@ const ProjectDetail = () => {
                 <button
                   onClick={() => {
                     if (carouselRef.current) {
-                      const scrollAmount = carouselRef.current.offsetWidth * 0.6;
+                      const scrollAmount = carouselRef.current.offsetWidth * 0.68;
                       carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                       setActiveSlide(prev => Math.max(0, prev - 1));
                     }
