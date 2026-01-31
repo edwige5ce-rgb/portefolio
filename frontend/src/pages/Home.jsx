@@ -187,12 +187,9 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div ref={addToRefs} className="reveal">
               <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">Notre vision</p>
-              <h2 className="text-4xl md:text-6xl font-semibold text-white tracking-tight mb-8">
-                Chaque espace<br/>raconte une histoire.
-              </h2>
-              <p className="text-xl text-white/60 leading-relaxed mb-8">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white tracking-tight mb-8 leading-tight">
                 {aboutContent.philosophy}
-              </p>
+              </h2>
               <Link 
                 to="/contact"
                 className="inline-flex items-center gap-3 text-white font-medium hover:gap-5 transition-all duration-300"
