@@ -53,7 +53,12 @@ export const projects = [
       }
     ],
     gallery: [
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/vj3dk2qp_Enscape_2026-01-26-14-36-48.png"
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/vj3dk2qp_Enscape_2026-01-26-14-36-48.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/gz4fo4ep_Enscape_2026-01-26-14-36-48.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/69r345po_Enscape_2026-01-26-14-43-40.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/diyiree7_Enscape_2026-01-26-14-48-42.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/ibj0q6lm_Enscape_2026-01-26-15-04-02.png",
+      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/eopfubdz_Enscape_2026-01-26-15-41-15.png"
     ],
     colors: ["#D4A574", "#8B7355", "#E85D04", "#2D3A2E"],
     services: ["Design d'intérieur", "Aménagement hôtelier", "Terrasse", "Éclairage"]
