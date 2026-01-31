@@ -281,7 +281,7 @@ const ProjectDetail = () => {
                 setActiveSlide(newActiveSlide);
               }}
             >
-              {project.gallery.map((img, index) => (
+              {uniqueGalleryImages.map((img, index) => (
                 <div 
                   key={index}
                   className="flex-shrink-0 snap-center"
