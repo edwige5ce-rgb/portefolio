@@ -180,67 +180,74 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Features - Apple Style */}
+      {/* Features - Apple Style with Image */}
       <section className="py-32 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          {/* Title */}
           <div ref={addToRefs} className="reveal text-center mb-20">
-            <p 
-              className="text-sm tracking-[0.2em] uppercase mb-4"
-              style={{ color: dominantColor }}
-            >
-              Caractéristiques
-            </p>
-            <h2 className="text-4xl md:text-6xl font-semibold text-white tracking-tight">
-              Les détails qui<br/>font la différence.
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight">
+              Les détails qui font la différence.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {project.features.map((feature, index) => (
-              <div 
-                key={index} 
-                ref={addToRefs}
-                className="reveal text-center"
-              >
-                <p 
-                  className="text-6xl md:text-7xl font-bold mb-4"
-                  style={{ color: dominantColor }}
-                >
-                  {feature.stat}
-                </p>
-                <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-                <p className="text-white/50 leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Color Palette */}
-      <section className="py-32 bg-black">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div ref={addToRefs} className="reveal text-center mb-16">
-            <p 
-              className="text-sm tracking-[0.2em] uppercase mb-4"
-              style={{ color: dominantColor }}
-            >
-              Palette
-            </p>
-            <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
-              Couleurs du projet
-            </h2>
-          </div>
-
-          <div ref={addToRefs} className="reveal flex justify-center flex-wrap gap-8">
-            {project.colors.map((color, index) => (
-              <div key={index} className="flex flex-col items-center gap-3">
-                <div 
-                  className="w-20 h-20 md:w-28 md:h-28 rounded-full shadow-lg transition-transform duration-300 hover:scale-110"
-                  style={{ backgroundColor: color }}
+          {/* Image + Features Layout */}
+          <div className="relative mb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Main Image */}
+              <div ref={addToRefs} className="reveal lg:col-span-7">
+                <img
+                  src={project.gallery?.[1] || project.heroImage}
+                  alt={project.title}
+                  className="w-full h-auto rounded-2xl"
                 />
-                <span className="text-white/40 text-sm font-mono">{color}</span>
               </div>
-            ))}
+
+              {/* Features on the right */}
+              <div className="lg:col-span-5 space-y-12">
+                {project.features.map((feature, index) => (
+                  <div 
+                    key={index} 
+                    ref={addToRefs}
+                    className="reveal"
+                  >
+                    <p className="text-white/60 text-sm mb-2">{feature.title}</p>
+                    <p 
+                      className="text-5xl md:text-6xl font-semibold"
+                      style={{ color: dominantColor }}
+                    >
+                      {feature.stat}
+                    </p>
+                  </div>
+                ))}
+
+                {/* Color Palette inline */}
+                <div ref={addToRefs} className="reveal pt-8">
+                  <p className="text-white/60 text-sm mb-4">Palette couleurs</p>
+                  <div className="flex gap-3">
+                    {project.colors.map((color, index) => (
+                      <div 
+                        key={index} 
+                        className="w-10 h-10 rounded-full shadow-lg"
+                        style={{ backgroundColor: color }}
+                        title={color}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Description at bottom */}
+          <div ref={addToRefs} className="reveal max-w-4xl mx-auto text-center">
+            <p className="text-white/50 text-base md:text-lg leading-relaxed">
+              {project.features.map((f, i) => (
+                <span key={i}>
+                  <span className="text-white">{f.title}</span> — {f.description}
+                  {i < project.features.length - 1 ? '. ' : '.'}
+                </span>
+              ))}
+            </p>
           </div>
         </div>
       </section>
