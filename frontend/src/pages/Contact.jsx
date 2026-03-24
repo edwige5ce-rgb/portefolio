@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Send, CheckCircle, Mail, Phone, MapPin } from 'lucide-react';
-import { siteConfig } from '../data/mock';
+import { siteConfig as mockSiteConfig } from '../data/mock';
+import { getSiteConfig, sendContactMessage } from '../services/api';
 
 const Contact = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [siteConfig, setSiteConfig] = useState(mockSiteConfig);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,6 +21,7 @@ const Contact = () => {
     window.scrollTo(0, 0);
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
+    getSiteConfig().then(setSiteConfig).catch(() => {});
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -31,8 +34,11 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulation d'envoi (sera connecté au backend)
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      await sendContactMessage(formData);
+    } catch (err) {
+      console.log('Contact form fallback - message logged locally');
+    }
     
     setIsSubmitting(false);
     setIsSubmitted(true);

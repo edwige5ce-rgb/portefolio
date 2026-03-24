@@ -1,17 +1,64 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ArrowRight } from 'lucide-react';
-import { siteConfig, heroContent, projects, services, aboutContent } from '../data/mock';
+import { siteConfig as mockSiteConfig, heroContent as mockHeroContent, projects as mockProjects, services as mockServices, aboutContent as mockAboutContent } from '../data/mock';
+import { getSiteConfig, getHero, getAbout, getServices, getProjects } from '../services/api';
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const sectionsRef = useRef([]);
+  const [siteConfig, setSiteConfig] = useState(mockSiteConfig);
+  const [heroContent, setHeroContent] = useState(mockHeroContent);
+  const [aboutContent, setAboutContent] = useState(mockAboutContent);
+  const [services, setServices] = useState(mockServices);
+  const [projectsData, setProjectsData] = useState(mockProjects);
+
+  // Fetch data from API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [configRes, heroRes, aboutRes, servicesRes, projectsRes] = await Promise.allSettled([
+          getSiteConfig(), getHero(), getAbout(), getServices(), getProjects()
+        ]);
+        if (configRes.status === 'fulfilled') setSiteConfig(configRes.value);
+        if (heroRes.status === 'fulfilled') setHeroContent(heroRes.value);
+        if (aboutRes.status === 'fulfilled') setAboutContent(aboutRes.value);
+        if (servicesRes.status === 'fulfilled') setServices(servicesRes.value);
+        if (projectsRes.status === 'fulfilled') setProjectsData(projectsRes.value);
+      } catch (err) {
+        console.log('Using mock data as fallback');
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Sort projects by year (oldest to newest)
+  const projects = useMemo(() => 
+    [...projectsData].sort((a, b) => parseInt(a.year) - parseInt(b.year)),
+    [projectsData]
+  );
+
+  // Collect all hero images for the slideshow
+  const heroImages = useMemo(() => 
+    projects.map(p => p.heroImage).filter(Boolean),
+    [projects]
+  );
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Background slideshow every 3 seconds
+  useEffect(() => {
+    if (heroImages.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % heroImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -43,32 +90,38 @@ const Home = () => {
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrollY > 100 ? 'bg-black/80 backdrop-blur-xl' : 'bg-transparent'
-      }`}>
+      }`} data-testid="main-nav">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-16">
-            <Link to="/" className="text-white font-semibold text-lg tracking-tight">
+            <Link to="/" className="text-white font-semibold text-lg tracking-tight" data-testid="nav-logo">
               {siteConfig.name}
             </Link>
             <div className="hidden md:flex items-center gap-8">
-              <a href="#projets" className="text-sm text-white/80 hover:text-white transition-colors">Projets</a>
-              <a href="#about" className="text-sm text-white/80 hover:text-white transition-colors">À propos</a>
-              <Link to="/contact" className="text-sm text-white/80 hover:text-white transition-colors">Contact</Link>
+              <a href="#projets" className="text-sm text-white/80 hover:text-white transition-colors" data-testid="nav-projets">Projets</a>
+              <a href="#about" className="text-sm text-white/80 hover:text-white transition-colors" data-testid="nav-about">À propos</a>
+              <Link to="/contact" className="text-sm text-white/80 hover:text-white transition-colors" data-testid="nav-contact">Contact</Link>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section - Apple Style */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Hero Section - Apple Style with Background Slideshow */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden" data-testid="hero-section">
         <div 
           className="absolute inset-0 transition-transform duration-100"
           style={{ transform: `scale(${1 + scrollY * 0.0003})` }}
         >
-          <img
-            src={projects[0].heroImage}
-            alt="Hero"
-            className="w-full h-full object-cover opacity-40"
-          />
+          {/* Background image slideshow */}
+          {heroImages.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt={`Slideshow ${index + 1}`}
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+              style={{ opacity: index === currentSlide ? 0.4 : 0 }}
+              data-testid={`hero-slide-${index}`}
+            />
+          ))}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black" />
         </div>
 
@@ -76,7 +129,7 @@ const Home = () => {
           <p className="text-white/60 text-sm tracking-[0.3em] uppercase mb-6 animate-fadeInUp">
             {heroContent.subtitle}
           </p>
-          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-semibold text-white tracking-tight leading-none mb-8 animate-fadeInUp animation-delay-200">
+          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-semibold text-white tracking-tight leading-none mb-8 animate-fadeInUp animation-delay-200" data-testid="hero-title">
             {heroContent.title}
           </h1>
           <p className="text-xl md:text-2xl text-white/70 font-light max-w-xl mx-auto animate-fadeInUp animation-delay-400">

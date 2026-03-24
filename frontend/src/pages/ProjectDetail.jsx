@@ -1,30 +1,58 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import { projects, siteConfig } from '../data/mock';
+import { projects as mockProjects, siteConfig as mockSiteConfig } from '../data/mock';
+import { getProjectBySlug, getProjects, getSiteConfig } from '../services/api';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
   const [scrollY, setScrollY] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const carouselRef = useRef(null);
-  
-  const project = projects.find(p => p.slug === slug);
-  const currentIndex = projects.findIndex(p => p.slug === slug);
-  const nextProject = projects[(currentIndex + 1) % projects.length];
-
-  // Get dominant color from project
-  const dominantColor = project?.colors?.[0] || '#ffffff';
+  const [project, setProject] = useState(null);
+  const [allProjects, setAllProjects] = useState(mockProjects);
+  const [siteConfig, setSiteConfig] = useState(mockSiteConfig);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setActiveSlide(0);
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const [projectRes, projectsRes, configRes] = await Promise.allSettled([
+          getProjectBySlug(slug),
+          getProjects(),
+          getSiteConfig()
+        ]);
+        if (projectRes.status === 'fulfilled') setProject(projectRes.value);
+        else setProject(mockProjects.find(p => p.slug === slug) || null);
+        if (projectsRes.status === 'fulfilled') setAllProjects(projectsRes.value);
+        if (configRes.status === 'fulfilled') setSiteConfig(configRes.value);
+      } catch {
+        setProject(mockProjects.find(p => p.slug === slug) || null);
+      }
+      setLoading(false);
+    };
+    fetchData();
   }, [slug]);
+
+  const currentIndex = allProjects.findIndex(p => p.slug === slug);
+  const nextProject = allProjects[(currentIndex + 1) % allProjects.length];
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   if (!project) {
     return (
@@ -40,6 +68,7 @@ const ProjectDetail = () => {
   }
 
   // Generate highlight texts for gallery
+  const dominantColor = project?.colors?.[0] || '#ffffff';
   const highlightTexts = [
     `${project.features[0]?.title || 'Design'}. ${project.features[0]?.description || project.description.slice(0, 80)}`,
     `${project.features[1]?.title || 'Matériaux'}. ${project.features[1]?.description || 'Sélection premium de matériaux nobles.'}`,
@@ -311,6 +340,7 @@ const ProjectDetail = () => {
             <div className="flex justify-center gap-2 mt-8">
               {uniqueGalleryImages.map((_, index) => (
                 <button
+                  key={index}
                   onClick={() => {
                     if (carouselRef.current) {
                       const cardWidth = carouselRef.current.offsetWidth * 0.68;
