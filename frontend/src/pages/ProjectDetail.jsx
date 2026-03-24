@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { projects as mockProjects, siteConfig as mockSiteConfig } from '../data/mock';
 import { getProjectBySlug, getProjects, getSiteConfig } from '../services/api';
 
@@ -10,6 +10,7 @@ const ProjectDetail = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const carouselRef = useRef(null);
   const [project, setProject] = useState(null);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
   const [allProjects, setAllProjects] = useState(mockProjects);
   const [siteConfig, setSiteConfig] = useState(mockSiteConfig);
   const [loading, setLoading] = useState(true);
@@ -46,6 +47,33 @@ const ProjectDetail = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Gallery images (safe to compute even with null project)
+  const uniqueGalleryImages = project?.gallery ? [...new Set(project.gallery)] : [];
+
+  // Lightbox keyboard navigation
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const prevLightbox = useCallback(() => {
+    setLightboxIndex(prev => prev > 0 ? prev - 1 : uniqueGalleryImages.length - 1);
+  }, [uniqueGalleryImages.length]);
+  const nextLightbox = useCallback(() => {
+    setLightboxIndex(prev => prev < uniqueGalleryImages.length - 1 ? prev + 1 : 0);
+  }, [uniqueGalleryImages.length]);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handleKey = (e) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevLightbox();
+      if (e.key === 'ArrowRight') nextLightbox();
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKey);
+    };
+  }, [lightboxIndex, closeLightbox, prevLightbox, nextLightbox]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
@@ -79,9 +107,6 @@ const ProjectDetail = () => {
     `Ambiance. Une atmosphère unique et personnalisée.`,
     `Lumière. Mise en valeur des volumes par un éclairage étudié.`
   ];
-
-  // Filter unique images from gallery
-  const uniqueGalleryImages = project?.gallery ? [...new Set(project.gallery)] : [];
 
   return (
     <div className="bg-black min-h-screen">
@@ -313,8 +338,10 @@ const ProjectDetail = () => {
               {uniqueGalleryImages.map((img, index) => (
                 <div 
                   key={index}
-                  className="flex-shrink-0 snap-center"
+                  className="flex-shrink-0 snap-center cursor-pointer"
                   style={{ width: '68%' }}
+                  onClick={() => setLightboxIndex(index)}
+                  data-testid={`gallery-image-${index}`}
                 >
                   <div className="relative rounded-3xl overflow-hidden bg-[#1a1a1a]">
                     <div className="absolute top-0 left-0 right-0 z-10 p-6 md:p-8">
@@ -389,6 +416,60 @@ const ProjectDetail = () => {
           </div>
         </div>
       </footer>
+
+      {/* Lightbox Fullscreen */}
+      {lightboxIndex !== null && uniqueGalleryImages[lightboxIndex] && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
+          onClick={closeLightbox}
+          data-testid="lightbox-overlay"
+        >
+          {/* Close button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
+            data-testid="lightbox-close"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Prev */}
+          {uniqueGalleryImages.length > 1 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); prevLightbox(); }}
+              className="absolute left-4 md:left-8 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
+              data-testid="lightbox-prev"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+          )}
+
+          {/* Image */}
+          <img
+            src={uniqueGalleryImages[lightboxIndex]}
+            alt={`${project.title} - Vue ${lightboxIndex + 1}`}
+            className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+            data-testid="lightbox-image"
+          />
+
+          {/* Next */}
+          {uniqueGalleryImages.length > 1 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); nextLightbox(); }}
+              className="absolute right-4 md:right-8 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
+              data-testid="lightbox-next"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          )}
+
+          {/* Counter */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-sm" data-testid="lightbox-counter">
+            {lightboxIndex + 1} / {uniqueGalleryImages.length}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
