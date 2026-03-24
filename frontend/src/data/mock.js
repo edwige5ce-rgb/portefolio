@@ -109,7 +109,7 @@ export const projects = [
     location: "Bruxelles, Belgique",
     year: "2024",
     category: "Retail Design",
-    heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/mpdt9l6i_VUE%20ENSEMBLE.png",
+    heroImage: "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/4b63a3sw_unnamed.jpg",
     description: "Un espace gourmand où l'élégance parisienne rencontre la chaleur belge. Le sol en damier noir et blanc dialogue avec les boiseries claires et les accents de bleu profond.",
     features: [
       {
@@ -128,9 +128,7 @@ export const projects = [
         stat: "3000K"
       }
     ],
-    gallery: [
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/mpdt9l6i_VUE%20ENSEMBLE.png"
-    ],
+    gallery: [],
     colors: ["#0D1B2A", "#f5f5f0", "#2B4A6F", "#C9A86C"],
     materials: ["Marbre Carrara", "Chêne clair", "Laiton poli", "Carrelage artisanal"],
     services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
