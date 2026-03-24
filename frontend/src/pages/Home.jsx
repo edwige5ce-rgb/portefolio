@@ -33,9 +33,9 @@ const Home = () => {
     fetchData();
   }, []);
 
-  // Sort projects by year (oldest to newest)
+  // Sort projects by year (newest to oldest)
   const projects = useMemo(() => 
-    [...projectsData].sort((a, b) => parseInt(a.year) - parseInt(b.year)),
+    [...projectsData].sort((a, b) => parseInt(b.year) - parseInt(a.year)),
     [projectsData]
   );
 
