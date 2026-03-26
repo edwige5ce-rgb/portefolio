@@ -280,7 +280,7 @@ const ProjectDetail = () => {
       </section>
 
       {/* Gallery - Apple Carousel Style */}
-      {uniqueGalleryImages && uniqueGalleryImages.length > 0 && (
+      {uniqueGalleryImages && uniqueGalleryImages.length > 1 && (
         <section className="py-32 bg-[#111]">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-12">
             <div className="flex justify-between items-center">

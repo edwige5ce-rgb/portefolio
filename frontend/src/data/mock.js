@@ -230,7 +230,7 @@ export const projects = [
         stat: "Sur mesure"
       }
     ],
-    gallery: [],
+    gallery: ["https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/qnburmb0_IMG_8672%5B1%5D.JPG"],
     colors: ["#722F37", "#F5F0E6", "#2C1810", "#D4AF37"],
     materials: ["Teck massif", "Cuir ivoire", "Laiton doré", "Verre teinté"],
     services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
