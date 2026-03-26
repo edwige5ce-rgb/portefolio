@@ -251,17 +251,14 @@ SEED_PROJECTS = [
         "location": "Monaco",
         "year": "2024",
         "category": "Nautical Design & Product Design",
-        "heroImage": "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/0uz16oqr_Enscape_2025-10-14-11-26-00.png",
+        "heroImage": "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/7ir145uf_IMG_8672%5B1%5D.JPG",
         "description": "L'intérieur de ce yacht incarne le summum du raffinement maritime. Les boiseries en teck, l'éclairage d'ambiance et les matériaux nobles créent un sanctuaire flottant.",
         "features": [
             {"title": "Boiseries Teck", "description": "Panneaux de teck massif avec veinage naturel, traitement marine", "stat": "Premium"},
             {"title": "Éclairage LED", "description": "Système d'ambiance intégré avec variation chromatique", "stat": "RGB"},
             {"title": "Cave à Cigares", "description": "Espace dédié avec contrôle d'humidité et température", "stat": "Sur mesure"}
         ],
-        "gallery": [
-            "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/0uz16oqr_Enscape_2025-10-14-11-26-00.png",
-            "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/cmghhf49_Enscape_2025-10-14-11-47-25.png"
-        ],
+        "gallery": [],
         "colors": ["#722F37", "#F5F0E6", "#2C1810", "#D4AF37"],
         "materials": ["Teck massif", "Cuir ivoire", "Laiton doré", "Verre teinté"],
         "services": ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
