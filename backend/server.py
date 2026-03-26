@@ -251,7 +251,7 @@ SEED_PROJECTS = [
         "location": "Monaco",
         "year": "2024",
         "category": "Nautical Design & Product Design",
-        "heroImage": "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/7ir145uf_IMG_8672%5B1%5D.JPG",
+        "heroImage": "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/2c8plsru_IMG_8673%5B1%5D.JPG",
         "description": "L'intérieur de ce yacht incarne le summum du raffinement maritime. Les boiseries en teck, l'éclairage d'ambiance et les matériaux nobles créent un sanctuaire flottant.",
         "features": [
             {"title": "Boiseries Teck", "description": "Panneaux de teck massif avec veinage naturel, traitement marine", "stat": "Premium"},
