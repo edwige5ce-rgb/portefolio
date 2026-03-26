@@ -161,12 +161,9 @@ export const projects = [
       }
     ],
     gallery: [
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/kjnw5yx8_OFFICE%20FOUR.png",
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/5uiziv6e_OFFICE%20ONE.png",
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/jt3ekep2_OFFICE%20FOUR.png",
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/xkjigw3a_OFFICE%20ONE.png",
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/81h1k7mn_OFFICE%20THREE.png",
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/h3535nb6_OFFICE%20TWO.png"
+      "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/954twmrf_IMG_8674%5B1%5D.JPG",
+      "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/bsvg5a32_IMG_8670%5B1%5D.JPG",
+      "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/tigibupa_IMG_8671%5B1%5D.JPG"
     ],
     colors: ["#3B5249", "#E8DFD0", "#C4A67C", "#F5F0E6"],
     materials: ["Chêne chevrons", "Panneaux acoustiques", "Métal noir", "Tissu bouclé"],
