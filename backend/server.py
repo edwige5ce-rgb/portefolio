@@ -167,14 +167,14 @@ SEED_PROJECTS = [
         "location": "Bruxelles, Belgique",
         "year": "2025",
         "category": "Retail Design",
-        "heroImage": "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/70jiw4uo_Enscape_2025-01-16-13-59-02.png",
+        "heroImage": "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/3412q72w_IMG_8687.JPG",
         "description": "Maison Édouard réinvente la brasserie traditionnelle belge. Les murs vert sapin dialoguent avec les banquettes en cuir cognac et les boiseries chaleureuses, créant une atmosphère à la fois intemporelle et contemporaine.",
         "features": [
             {"title": "Murs Signature", "description": "Revêtement mural vert sapin avec lettrage doré artisanal", "stat": "Vert Forêt"},
             {"title": "Banquettes Cuir", "description": "Cuir naturel cognac capitonné, confort premium", "stat": "Sur mesure"},
             {"title": "Parquet Chêne", "description": "Parquet massif aspect vieilli pour une ambiance authentique", "stat": "250 m²"}
         ],
-        "gallery": ["https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/70jiw4uo_Enscape_2025-01-16-13-59-02.png"],
+        "gallery": ["https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/3412q72w_IMG_8687.JPG"],
         "colors": ["#2D4A3E", "#C4783A", "#D4A574", "#F5F0E6"],
         "materials": ["Cuir cognac", "Chêne vieilli", "Laiton brossé", "Peinture mate"],
         "services": ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
