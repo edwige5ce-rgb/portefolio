@@ -106,7 +106,7 @@ class ContactMessageOut(BaseModel):
 # ============================================
 
 SEED_SITE_CONFIG = {
-    "name": "edgs-design.com",
+    "name": "CJE-design",
     "tagline": "Design d'Intérieur",
     "description": "Créateur d'atmosphères uniques",
     "email": "edgs.designer@outlook.fr",

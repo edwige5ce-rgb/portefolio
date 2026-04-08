@@ -4,7 +4,7 @@
 // ============================================
 
 export const siteConfig = {
-  name: "edgs-design.com",
+  name: "CJE-design",
   tagline: "Design d'Intérieur",
   description: "Créateur d'atmosphères uniques",
   email: "edgs.designer@outlook.fr",
