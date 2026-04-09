@@ -116,7 +116,7 @@ SEED_SITE_CONFIG = {
 }
 
 SEED_HERO = {
-    "title": "Atmosphères",
+    "title": "CJE design",
     "subtitle": "Architecture & Technology Design",
     "description": "L'architecture et objet technologique ne font qu'un.",
     "scrollText": "Défiler pour explorer"
