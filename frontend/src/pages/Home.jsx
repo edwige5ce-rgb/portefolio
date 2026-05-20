@@ -2,36 +2,16 @@ import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { siteConfig as mockSiteConfig, heroContent as mockHeroContent, projects as mockProjects, services as mockServices, aboutContent as mockAboutContent } from '../data/mock';
-import { getSiteConfig, getHero, getAbout, getServices, getProjects } from '../services/api';
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   const sectionsRef = useRef([]);
-  const [siteConfig, setSiteConfig] = useState(mockSiteConfig);
-  const [heroContent, setHeroContent] = useState(mockHeroContent);
-  const [aboutContent, setAboutContent] = useState(mockAboutContent);
-  const [services, setServices] = useState(mockServices);
-  const [projectsData, setProjectsData] = useState(mockProjects);
-
-  // Fetch data from API
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [configRes, heroRes, aboutRes, servicesRes, projectsRes] = await Promise.allSettled([
-          getSiteConfig(), getHero(), getAbout(), getServices(), getProjects()
-        ]);
-        if (configRes.status === 'fulfilled') setSiteConfig(configRes.value);
-        if (heroRes.status === 'fulfilled') setHeroContent(heroRes.value);
-        if (aboutRes.status === 'fulfilled') setAboutContent(aboutRes.value);
-        if (servicesRes.status === 'fulfilled') setServices(servicesRes.value);
-        if (projectsRes.status === 'fulfilled') setProjectsData(projectsRes.value);
-      } catch (err) {
-        console.log('Using mock data as fallback');
-      }
-    };
-    fetchData();
-  }, []);
+  const [siteConfig] = useState(mockSiteConfig);
+  const [heroContent] = useState(mockHeroContent);
+  const [aboutContent] = useState(mockAboutContent);
+  const [services] = useState(Array.isArray(mockServices) ? mockServices : []);
+  const [projectsData] = useState(Array.isArray(mockProjects) ? mockProjects : []);
 
   // Sort projects by year (newest to oldest)
   const projects = useMemo(() => 
@@ -85,6 +65,8 @@ const Home = () => {
     }
   };
 
+  const aboutImage = projects.length > 2 ? projects[2].heroImage : projects[0]?.heroImage;
+
   return (
     <div className="bg-black min-h-screen">
       {/* Navigation */}
@@ -105,13 +87,12 @@ const Home = () => {
         </div>
       </nav>
 
-      {/* Hero Section - Apple Style with Background Slideshow */}
+      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden" data-testid="hero-section">
         <div 
           className="absolute inset-0 transition-transform duration-100"
           style={{ transform: `scale(${1 + scrollY * 0.0003})` }}
         >
-          {/* Background image slideshow */}
           {heroImages.map((img, index) => (
             <img
               key={index}
@@ -142,7 +123,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Projects Showcase - Apple Card Style */}
+      {/* Projects Showcase */}
       <section id="projets" className="py-32 bg-black">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div ref={addToRefs} className="reveal mb-20">
@@ -163,7 +144,6 @@ const Home = () => {
                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
                   index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                 }`}>
-                  {/* Image */}
                   <div className={`relative overflow-hidden rounded-3xl ${
                     index % 2 === 1 ? 'lg:order-2' : ''
                   }`}>
@@ -177,7 +157,6 @@ const Home = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
-                  {/* Content */}
                   <div className={`${index % 2 === 1 ? 'lg:order-1 lg:text-right' : ''}`}>
                     <p 
                       className="text-sm tracking-[0.2em] uppercase mb-4"
@@ -251,21 +230,23 @@ const Home = () => {
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
-            <div ref={addToRefs} className="reveal">
-              <div className="relative">
-                <div className="aspect-square rounded-3xl overflow-hidden">
-                  <img
-                    src={projects[2].heroImage}
-                    alt="About"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute -bottom-8 -left-8 bg-white text-black p-8 rounded-2xl max-w-xs">
-                  <p className="text-4xl font-bold mb-2">{aboutContent.years}</p>
-                  <p className="text-gray-600">{aboutContent.yearsLabel}</p>
+            {aboutImage && (
+              <div ref={addToRefs} className="reveal">
+                <div className="relative">
+                  <div className="aspect-square rounded-3xl overflow-hidden">
+                    <img
+                      src={aboutImage}
+                      alt="About"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute -bottom-8 -left-8 bg-white text-black p-8 rounded-2xl max-w-xs">
+                    <p className="text-4xl font-bold mb-2">{aboutContent.years}</p>
+                    <p className="text-gray-600">{aboutContent.yearsLabel}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
