@@ -99,7 +99,7 @@ export const projects = [
     ],
     colors: ["#2D4A3E", "#C4783A", "#D4A574", "#F5F0E6"],
     materials: ["Cuir cognac", "Chêne vieilli", "Laiton brossé", "Peinture mate"],
-    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 3,
@@ -131,7 +131,7 @@ export const projects = [
     gallery: [],
     colors: ["#0D1B2A", "#f5f5f0", "#2B4A6F", "#C9A86C"],
     materials: ["Marbre Carrara", "Chêne clair", "Laiton poli", "Carrelage artisanal"],
-    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 4,
@@ -167,7 +167,7 @@ export const projects = [
     ],
     colors: ["#3B5249", "#E8DFD0", "#C4A67C", "#F5F0E6"],
     materials: ["Chêne chevrons", "Panneaux acoustiques", "Métal noir", "Tissu bouclé"],
-    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 5,
@@ -176,7 +176,7 @@ export const projects = [
     subtitle: "Boutique d'Ensemblière",
     location: "Lyon, France",
     year: "2024",
-    category: "Interior Design",
+    category: "design intérieur",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zvsicm76_ChatGPT%20Image%2025%20janv.%202026%2C%2016_29_26.png",
     description: "Ancienne boutique d'ensemblière qui respire la passion du cinéma. Le cuir noir, le parquet chevrons et les techniques de rénovation médiévale créent un univers intemporel et immersif pour les artistes anachroniques.",
     features: [
@@ -201,7 +201,7 @@ export const projects = [
     ],
     colors: ["#C2452D", "#F5F5F5", "#C4A67C", "#E85D04"],
     materials: ["Cuir noir premium", "Chêne chevrons", "Verre fumé", "Acier brossé"],
-    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 6,
@@ -233,7 +233,7 @@ export const projects = [
     gallery: ["https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/qnburmb0_IMG_8672%5B1%5D.JPG"],
     colors: ["#722F37", "#F5F0E6", "#2C1810", "#D4AF37"],
     materials: ["Teck massif", "Cuir ivoire", "Laiton doré", "Verre teinté"],
-    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 7,
@@ -270,7 +270,7 @@ export const projects = [
     ],
     colors: ["#1F3A93", "#8B9A7D", "#F5F5F0", "#3D3D3D"],
     materials: ["Épicéa local", "Polycarbonate", "Tissu poreux", "Acier corten"],
-    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   }
 ];
 
