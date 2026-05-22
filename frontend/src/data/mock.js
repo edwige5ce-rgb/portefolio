@@ -38,7 +38,7 @@ export const projects = [
     subtitle: "Suite hôtelière",
     location: "Côte d'Azur, France",
     year: "2026",
-    category: "Interior Design",
+    category: "Design interieur",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/vj3dk2qp_Enscape_2026-01-26-14-36-48.png",
     description: "Une suite hôtelière où le luxe rencontre la nature. Les boiseries chaleureuses dialoguent avec un mur de pierre brute spectaculaire, tandis que les baies vitrées ouvrent sur un balcon verdoyant baigné de lumière dorée.",
     features: [
@@ -65,7 +65,7 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/t7mqp45k_IMG_8655.JPG"
     ],
     colors: ["#D4A574", "#8B7355", "#E85D04", "#2D3A2E"],
-    services: ["Space planning", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 2,
@@ -74,9 +74,9 @@ export const projects = [
     subtitle: "Brasserie & Boulangerie",
     location: "Bruxelles, Belgique",
     year: "2025",
-    category: "Retail Design",
+    category: "Design commercial",
     heroImage: "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/3412q72w_IMG_8687.JPG",
-    description: "Maison Édouard réinvente la brasserie traditionnelle belge. Les murs vert sapin dialoguent avec les banquettes en cuir cognac et les boiseries chaleureuses, créant une atmosphère à la fois intemporelle et contemporaine.",
+    description: "Maison Édouard réinvente la brasserie traditionnelle belge. Les murs vert sapin dialoguent avec les banquettes en cuir cognac et les boiseries chaleureuses, créant une atmosphère intemporelle.",
     features: [
       {
         title: "Murs Signature",
