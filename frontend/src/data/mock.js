@@ -4,7 +4,7 @@
 // ============================================
 
 export const siteConfig = {
-  name: "CJE-design",
+  name: "cje design",
   tagline: "Design d'Intérieur",
   description: "Créateur d'atmosphères uniques",
   email: "edgs.designer@outlook.fr",
@@ -18,9 +18,9 @@ export const siteConfig = {
 };
 
 export const heroContent = {
-  title: "CJE design",
-  subtitle: "Architecture & Technology Design",
-  description: "L'architecture et objet technologique ne font qu'un.",
+  title: "l'architecture & le design technologique",
+  subtitle: 
+  description: "ne font qu'un.",
   scrollText: "Défiler pour explorer"
 };
 
