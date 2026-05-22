@@ -239,12 +239,12 @@ export const projects = [
     id: 7,
     slug: "altitude-aframe",
     title: "Altitude",
-    subtitle: "Refuge A-Frame",
+    subtitle: "Structure A-Frame",
     location: "Alpes Suisses",
     year: "2025",
-    category: "Retail Design",
+    category: "Design environnemental",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/4myq3y0d_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180558.png",
-    description: "Capteur de rosée minimaliste captant l'humidité du brouillard, stockant l'eau puis la redistribuant par goutte-à-goutte pour renforcer la biodiversité sur pentes vallonnées exposées aux incendies.",
+    description: "Capteur de rosée minimaliste stockant l'eau puis la redistribuant par goutte-à-goutte pour renforcer la biodiversité.",
     features: [
       {
         title: "Capteur de Rosée",
