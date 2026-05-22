@@ -35,12 +35,12 @@ export const projects = [
     id: 1,
     slug: "suite-serenite",
     title: "Sérénité",
-    subtitle: "Suite Hôtelière",
+    subtitle: "Suite hôtelière",
     location: "Côte d'Azur, France",
     year: "2026",
     category: "Interior Design",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/vj3dk2qp_Enscape_2026-01-26-14-36-48.png",
-    description: "Une suite hôtelière où le luxe rencontre la nature. Les boiseries chaleureuses dialoguent avec un mur de pierre brute spectaculaire, tandis que les baies vitrées ouvrent sur un balcon végétalisé baigné de lumière dorée.",
+    description: "Une suite hôtelière où le luxe rencontre la nature. Les boiseries chaleureuses dialoguent avec un mur de pierre brute spectaculaire, tandis que les baies vitrées ouvrent sur un balcon verdoyant baigné de lumière dorée.",
     features: [
       {
         title: "Mur Pierre Naturelle",
