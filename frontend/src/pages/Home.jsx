@@ -129,7 +129,7 @@ const Home = () => {
           <div ref={addToRefs} className="reveal mb-20">
             <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">Portfolio</p>
             <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tight">
-              Nos Projets
+              Les Projets
             </h2>
           </div>
 
