@@ -2,40 +2,21 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { projects as mockProjects, siteConfig as mockSiteConfig } from '../data/mock';
-import { getProjectBySlug, getProjects, getSiteConfig } from '../services/api';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
   const [scrollY, setScrollY] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const carouselRef = useRef(null);
-  const [project, setProject] = useState(null);
   const [lightboxIndex, setLightboxIndex] = useState(null);
-  const [allProjects, setAllProjects] = useState(mockProjects);
-  const [siteConfig, setSiteConfig] = useState(mockSiteConfig);
-  const [loading, setLoading] = useState(true);
+
+  const allProjects = Array.isArray(mockProjects) ? mockProjects : [];
+  const siteConfig = mockSiteConfig;
+  const project = allProjects.find(p => p.slug === slug) || null;
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setActiveSlide(0);
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const [projectRes, projectsRes, configRes] = await Promise.allSettled([
-          getProjectBySlug(slug),
-          getProjects(),
-          getSiteConfig()
-        ]);
-        if (projectRes.status === 'fulfilled') setProject(projectRes.value);
-        else setProject(mockProjects.find(p => p.slug === slug) || null);
-        if (projectsRes.status === 'fulfilled') setAllProjects(projectsRes.value);
-        if (configRes.status === 'fulfilled') setSiteConfig(configRes.value);
-      } catch {
-        setProject(mockProjects.find(p => p.slug === slug) || null);
-      }
-      setLoading(false);
-    };
-    fetchData();
   }, [slug]);
 
   const currentIndex = allProjects.findIndex(p => p.slug === slug);
@@ -47,10 +28,8 @@ const ProjectDetail = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Gallery images (safe to compute even with null project)
   const uniqueGalleryImages = project?.gallery ? [...new Set(project.gallery)] : [];
 
-  // Lightbox keyboard navigation
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
   const prevLightbox = useCallback(() => {
     setLightboxIndex(prev => prev > 0 ? prev - 1 : uniqueGalleryImages.length - 1);
@@ -74,14 +53,6 @@ const ProjectDetail = () => {
     };
   }, [lightboxIndex, closeLightbox, prevLightbox, nextLightbox]);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-      </div>
-    );
-  }
-
   if (!project) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
@@ -95,7 +66,6 @@ const ProjectDetail = () => {
     );
   }
 
-  // Generate highlight texts for gallery
   const dominantColor = project?.colors?.[0] || '#ffffff';
   const highlightTexts = [
     `${project.features[0]?.title || 'Design'}. ${project.features[0]?.description || project.description.slice(0, 80)}`,
@@ -130,7 +100,7 @@ const ProjectDetail = () => {
         </div>
       </nav>
 
-      {/* Hero Section - Apple Style */}
+      {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
         <div className="text-center max-w-4xl mx-auto mb-16">
           <p 
@@ -139,18 +109,15 @@ const ProjectDetail = () => {
           >
             {project.category}
           </p>
-          
           <h1 
             className="text-7xl md:text-8xl lg:text-9xl font-semibold tracking-tight leading-none mb-6 animate-fadeInUp animation-delay-200"
             style={{ color: dominantColor }}
           >
             {project.title}
           </h1>
-          
           <p className="text-2xl md:text-3xl text-white/70 font-light mb-4 animate-fadeInUp animation-delay-400">
             {project.subtitle}
           </p>
-          
           <p className="text-white/40 text-sm tracking-wider animate-fadeInUp animation-delay-400">
             {project.year}
           </p>
@@ -205,7 +172,7 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Features - Apple Style with Image */}
+      {/* Features */}
       <section className="py-32 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
@@ -279,7 +246,7 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Gallery - Apple Carousel Style */}
+      {/* Gallery */}
       {uniqueGalleryImages && uniqueGalleryImages.length > 1 && (
         <section className="py-32 bg-[#111]">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-12">
@@ -287,8 +254,6 @@ const ProjectDetail = () => {
               <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
                 Points forts.
               </h2>
-              
-              {/* Navigation Arrows */}
               <div className="flex gap-3">
                 <button
                   onClick={() => {
@@ -322,11 +287,7 @@ const ProjectDetail = () => {
             <div 
               ref={carouselRef}
               className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-[16%] pb-8 cursor-grab active:cursor-grabbing"
-              style={{ 
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-                WebkitOverflowScrolling: 'touch'
-              }}
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
               onScroll={(e) => {
                 const container = e.target;
                 const scrollLeft = container.scrollLeft;
@@ -341,7 +302,6 @@ const ProjectDetail = () => {
                   className="flex-shrink-0 snap-center cursor-pointer"
                   style={{ width: '68%' }}
                   onClick={() => setLightboxIndex(index)}
-                  data-testid={`gallery-image-${index}`}
                 >
                   <div className="relative rounded-3xl overflow-hidden bg-[#1a1a1a]">
                     <div className="absolute top-0 left-0 right-0 z-10 p-6 md:p-8">
@@ -349,7 +309,6 @@ const ProjectDetail = () => {
                         {highlightTexts[index % highlightTexts.length]}
                       </p>
                     </div>
-                    
                     <div className="aspect-[16/10] relative">
                       <img
                         src={img}
@@ -363,7 +322,6 @@ const ProjectDetail = () => {
               ))}
             </div>
 
-            {/* Navigation Dots */}
             <div className="flex justify-center gap-2 mt-8">
               {uniqueGalleryImages.map((_, index) => (
                 <button
@@ -386,24 +344,26 @@ const ProjectDetail = () => {
       )}
 
       {/* Next Project */}
-      <section className="py-32 bg-black border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <Link to={`/projet/${nextProject.slug}`} className="group block text-center">
-            <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-6">Projet suivant</p>
-            <h2 
-              className="text-6xl md:text-8xl font-semibold tracking-tight mb-4 transition-colors duration-300"
-              style={{ color: nextProject.colors?.[0] || '#ffffff' }}
-            >
-              {nextProject.title}
-            </h2>
-            <p className="text-xl text-white/50 mb-8">{nextProject.subtitle}</p>
-            <div className="inline-flex items-center gap-3 text-white group-hover:gap-5 transition-all duration-300">
-              <span className="font-medium">Voir le projet</span>
-              <ArrowRight className="w-6 h-6" />
-            </div>
-          </Link>
-        </div>
-      </section>
+      {nextProject && (
+        <section className="py-32 bg-black border-t border-white/10">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <Link to={`/projet/${nextProject.slug}`} className="group block text-center">
+              <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-6">Projet suivant</p>
+              <h2 
+                className="text-6xl md:text-8xl font-semibold tracking-tight mb-4 transition-colors duration-300"
+                style={{ color: nextProject.colors?.[0] || '#ffffff' }}
+              >
+                {nextProject.title}
+              </h2>
+              <p className="text-xl text-white/50 mb-8">{nextProject.subtitle}</p>
+              <div className="inline-flex items-center gap-3 text-white group-hover:gap-5 transition-all duration-300">
+                <span className="font-medium">Voir le projet</span>
+                <ArrowRight className="w-6 h-6" />
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* Footer */}
       <footer className="py-12 bg-[#0a0a0a] border-t border-white/10">
@@ -417,55 +377,45 @@ const ProjectDetail = () => {
         </div>
       </footer>
 
-      {/* Lightbox Fullscreen */}
+      {/* Lightbox */}
       {lightboxIndex !== null && uniqueGalleryImages[lightboxIndex] && (
         <div 
           className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
           onClick={closeLightbox}
-          data-testid="lightbox-overlay"
         >
-          {/* Close button */}
           <button
             onClick={closeLightbox}
             className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
-            data-testid="lightbox-close"
           >
             <X className="w-6 h-6" />
           </button>
 
-          {/* Prev */}
           {uniqueGalleryImages.length > 1 && (
             <button
               onClick={(e) => { e.stopPropagation(); prevLightbox(); }}
               className="absolute left-4 md:left-8 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
-              data-testid="lightbox-prev"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
           )}
 
-          {/* Image */}
           <img
             src={uniqueGalleryImages[lightboxIndex]}
             alt={`${project.title} - Vue ${lightboxIndex + 1}`}
             className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg"
             onClick={(e) => e.stopPropagation()}
-            data-testid="lightbox-image"
           />
 
-          {/* Next */}
           {uniqueGalleryImages.length > 1 && (
             <button
               onClick={(e) => { e.stopPropagation(); nextLightbox(); }}
               className="absolute right-4 md:right-8 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
-              data-testid="lightbox-next"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
           )}
 
-          {/* Counter */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-sm" data-testid="lightbox-counter">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-sm">
             {lightboxIndex + 1} / {uniqueGalleryImages.length}
           </div>
         </div>
