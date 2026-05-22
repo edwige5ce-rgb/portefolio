@@ -137,12 +137,12 @@ export const projects = [
     id: 4,
     slug: "studio-da-tech",
     title: "Studio DA & Tech",
-    subtitle: "Espace de Coworking",
+    subtitle: "Espace de coworking",
     location: "Paris, France",
     year: "2025",
-    category: "Bureau",
+    category: "aménagement de bureau",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/kjnw5yx8_OFFICE%20FOUR.png",
-    description: "Un espace de travail contemporain où le bleu-vert profond rencontre le bois naturel. Les panneaux acoustiques beige et le parquet chevrons créent une atmosphère propice à la concentration et à la créativité.",
+    description: "Un espace de travail contemporain où le vert canard rencontre le bois naturel. Les panneaux acoustiques beige et le parquet chevrons créent une atmosphère propice à la concentration et à la créativité.",
     features: [
       {
         title: "Parquet Chevrons",
