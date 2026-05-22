@@ -207,12 +207,12 @@ export const projects = [
     id: 6,
     slug: "n3-horizon",
     title: "N.3 Horizon",
-    subtitle: "Yacht de Luxe",
-    location: "Monaco",
+    subtitle: "Yacht",
+    location: "toulon",
     year: "2024",
-    category: "Nautical Design & Product Design",
+    category: "design nautique & design produit",
     heroImage: "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/2c8plsru_IMG_8673%5B1%5D.JPG",
-    description: "L'intérieur de ce yacht incarne le summum du raffinement maritime. Les boiseries en teck, l'éclairage d'ambiance et les matériaux nobles créent un sanctuaire flottant.",
+    description: "L'intérieur de ce yacht incarne l'excellence du raffinement maritime. Les boiseries en teck, l'éclairage d'ambiance et les matériaux nobles créent un intérieur suspendu entre ciel et mer.",
     features: [
       {
         title: "Boiseries Teck",
