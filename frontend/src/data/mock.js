@@ -108,9 +108,9 @@ export const projects = [
     subtitle: "Boulangerie & Café",
     location: "Bruxelles, Belgique",
     year: "2024",
-    category: "Retail Design",
+    category: "Design commercial",
     heroImage: "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/4b63a3sw_unnamed.jpg",
-    description: "Un espace gourmand où l'élégance parisienne rencontre la chaleur belge. Le sol en damier noir et blanc dialogue avec les boiseries claires et les accents de bleu profond.",
+    description: "Un intérieur pensé autour du plaisir, un équilibre entre héritage et modernité. Le carrelage en damier dialogue avec les boiseries claires et les accents de bleu profond.",
     features: [
       {
         title: "Sol Signature",
