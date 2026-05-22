@@ -18,9 +18,9 @@ export const siteConfig = {
 };
 
 export const heroContent = {
-  title: "l'architecture & le design technologique",
-  subtitle: 
-  description: "ne font qu'un.",
+  title: "CJE design",
+  subtitle: "Architecture & Technology Design",
+  description: "L'architecture et l'objet technologique ne font qu'un.",
   scrollText: "Défiler pour explorer"
 };
 
