@@ -20,7 +20,7 @@ export const siteConfig = {
 export const heroContent = {
   title: "CJE design",
   subtitle: "Architecture & Technology Design",
-  description: "L'architecture et l'objet technologique ne font qu'un.",
+  description: "L'architecture et la technologique ne font qu'un.",
   scrollText: "Défiler pour explorer"
 };
 
