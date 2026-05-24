@@ -1,14 +1,14 @@
 // ============================================
 // DONNÉES MODIFIABLES DU PORTFOLIO
-// Style Apple - Design d'intérieur
+// CJE design — Architecture & Technology Design
 // ============================================
 
 export const siteConfig = {
-  name: "cje design",
-  tagline: "Design d'Intérieur",
+  name: "CJE design",
+  tagline: "Architecture & Technology Design",
   description: "Créateur d'atmosphères uniques",
   email: "edgs.designer@outlook.fr",
-  phone: "+33 0665781033",
+  phone: "+33 6 65 78 10 33",
   address: "Paris, France",
   social: {
     instagram: "#",
@@ -20,13 +20,13 @@ export const siteConfig = {
 export const heroContent = {
   title: "CJE design",
   subtitle: "Architecture & Technology Design",
-  description: "L'architecture et la technologique ne font qu'un.",
+  description: "L'architecture et l'objet technologique ne font qu'un.",
   scrollText: "Défiler pour explorer"
 };
 
 export const aboutContent = {
   years: "8+",
-  yearsLabel: "Années d'expérience en design d'intérieur",
+  yearsLabel: "Années d'expérience en design",
   philosophy: "L'objet prolonge l'architecture, la technologie amplifie l'expérience, les images racontent une vision claire."
 };
 
@@ -38,7 +38,7 @@ export const projects = [
     subtitle: "Suite hôtelière",
     location: "Côte d'Azur, France",
     year: "2026",
-    category: "Design interieur",
+    category: "Design intérieur",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/vj3dk2qp_Enscape_2026-01-26-14-36-48.png",
     description: "Une suite hôtelière où le luxe rencontre la nature. Les boiseries chaleureuses dialoguent avec un mur de pierre brute spectaculaire, tandis que les baies vitrées ouvrent sur un balcon verdoyant baigné de lumière dorée.",
     features: [
@@ -53,7 +53,7 @@ export const projects = [
         stat: "Premium"
       },
       {
-        title: "Balcon Végétalisé",
+        title: "Balcon Verdoyant",
         description: "Terrasse privative avec jardin suspendu luxuriant",
         stat: "25 m²"
       }
@@ -65,7 +65,7 @@ export const projects = [
       "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/t7mqp45k_IMG_8655.JPG"
     ],
     colors: ["#D4A574", "#8B7355", "#E85D04", "#2D3A2E"],
-    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["Planification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 2,
@@ -76,7 +76,7 @@ export const projects = [
     year: "2025",
     category: "Design commercial",
     heroImage: "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/3412q72w_IMG_8687.JPG",
-    description: "Maison Édouard réinvente la brasserie traditionnelle belge. Les murs vert sapin dialoguent avec les banquettes en cuir cognac et les boiseries chaleureuses, créant une atmosphère intemporelle.",
+    description: "Maison Édouard réinvente la brasserie traditionnelle belge. Les murs vert sapin dialoguent avec les banquettes en cuir cognac et les boiseries chaleureuses, créant une atmosphère à la fois classique et actuelle.",
     features: [
       {
         title: "Murs Signature",
@@ -99,7 +99,7 @@ export const projects = [
     ],
     colors: ["#2D4A3E", "#C4783A", "#D4A574", "#F5F0E6"],
     materials: ["Cuir cognac", "Chêne vieilli", "Laiton brossé", "Peinture mate"],
-    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["Planification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 3,
@@ -110,7 +110,7 @@ export const projects = [
     year: "2024",
     category: "Design commercial",
     heroImage: "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/4b63a3sw_unnamed.jpg",
-    description: "Un intérieur pensé autour du plaisir, un équilibre entre héritage et modernité. Le carrelage en damier dialogue avec les boiseries claires et les accents de bleu profond.",
+    description: "Un intérieur pensé autour du plaisir de recevoir, où chaque matériau raconte une histoire d'artisanat et de soin. Le carrelage en damier dialogue avec les boiseries claires et les accents de bleu profond.",
     features: [
       {
         title: "Sol Signature",
@@ -131,7 +131,7 @@ export const projects = [
     gallery: [],
     colors: ["#0D1B2A", "#f5f5f0", "#2B4A6F", "#C9A86C"],
     materials: ["Marbre Carrara", "Chêne clair", "Laiton poli", "Carrelage artisanal"],
-    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["Planification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 4,
@@ -140,7 +140,7 @@ export const projects = [
     subtitle: "Espace de coworking",
     location: "Paris, France",
     year: "2025",
-    category: "aménagement de bureau",
+    category: "Aménagement de bureau",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/kjnw5yx8_OFFICE%20FOUR.png",
     description: "Un espace de travail contemporain où le vert canard rencontre le bois naturel. Les panneaux acoustiques beige et le parquet chevrons créent une atmosphère propice à la concentration et à la créativité.",
     features: [
@@ -151,8 +151,8 @@ export const projects = [
       },
       {
         title: "Mur Accent",
-        description: "Panneaux moulurés bleu-vert avec éclairage LED indirect",
-        stat: "Bleu Canard"
+        description: "Panneaux moulurés vert canard avec éclairage LED indirect",
+        stat: "Vert Canard"
       },
       {
         title: "Postes de Travail",
@@ -167,16 +167,16 @@ export const projects = [
     ],
     colors: ["#3B5249", "#E8DFD0", "#C4A67C", "#F5F0E6"],
     materials: ["Chêne chevrons", "Panneaux acoustiques", "Métal noir", "Tissu bouclé"],
-    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["Planification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 6,
     slug: "n3-horizon",
     title: "N.3 Horizon",
-    subtitle: "Yacht",
-    location: "toulon",
+    subtitle: "Yacht de luxe",
+    location: "Monaco",
     year: "2024",
-    category: "design nautique & design produit",
+    category: "Design nautique & Design produit",
     heroImage: "https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/2c8plsru_IMG_8673%5B1%5D.JPG",
     description: "L'intérieur de ce yacht incarne l'excellence du raffinement maritime. Les boiseries en teck, l'éclairage d'ambiance et les matériaux nobles créent un intérieur suspendu entre ciel et mer.",
     features: [
@@ -199,7 +199,7 @@ export const projects = [
     gallery: ["https://customer-assets.emergentagent.com/job_6f92c830-0bfe-4c31-9041-4437941d9955/artifacts/qnburmb0_IMG_8672%5B1%5D.JPG"],
     colors: ["#722F37", "#F5F0E6", "#2C1810", "#D4AF37"],
     materials: ["Teck massif", "Cuir ivoire", "Laiton doré", "Verre teinté"],
-    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["Planification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
   {
     id: 7,
@@ -210,7 +210,7 @@ export const projects = [
     year: "2025",
     category: "Design environnemental",
     heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/4myq3y0d_Capture%20d%E2%80%99%C3%A9cran%202025-11-11%20180558.png",
-    description: "Capteur de rosée minimaliste stockant l'eau puis la redistribuant par goutte-à-goutte pour renforcer la biodiversité.",
+    description: "Capteur de rosée minimaliste stockant l'eau puis la redistribuant par goutte-à-goutte pour renforcer la biodiversité sur les versants exposés aux incendies.",
     features: [
       {
         title: "Capteur de Rosée",
@@ -236,21 +236,21 @@ export const projects = [
     ],
     colors: ["#1F3A93", "#8B9A7D", "#F5F5F0", "#3D3D3D"],
     materials: ["Épicéa local", "Polycarbonate", "Tissu poreux", "Acier corten"],
-    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
+    services: ["Planification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   }
 ];
 
 export const services = [
   {
     title: "Space Planning",
-    description: "Conception et optimisation des espaces, visualisation et Immersion (3D/AR/VR)"
+    description: "Conception et optimisation des espaces, visualisation et immersion (3D/AR/VR)"
   },
   {
     title: "Collaboration Asynchrone",
-    description: "Simplifier les workflows entre designers, ingénieurs, clients. Mesure d'impact sur les décisions design et vente."
+    description: "Simplifier les workflows entre designers, ingénieurs et clients. Mesure d'impact sur les décisions design et vente."
   },
   {
-    title: "Data et AI",
-    description: "Structurer et exploiter les données design et usage. AI générative pour optimisation des plans et scénarios."
+    title: "Data & IA",
+    description: "Structurer et exploiter les données design et usage. IA générative pour optimisation des plans et scénarios."
   }
 ];
