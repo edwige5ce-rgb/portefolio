@@ -169,10 +169,6 @@ export const projects = [
     materials: ["Chêne chevrons", "Panneaux acoustiques", "Métal noir", "Tissu bouclé"],
     services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
-    colors: ["#C2452D", "#F5F5F5", "#C4A67C", "#E85D04"],
-    materials: ["Cuir noir premium", "Chêne chevrons", "Verre fumé", "Acier brossé"],
-    services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
-  },
   {
     id: 6,
     slug: "n3-horizon",
