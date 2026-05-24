@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { siteConfig as mockSiteConfig, heroContent as mockHeroContent, projects as mockProjects, services as mockServices, aboutContent as mockAboutContent } from '../data/mock';
+import CustomCursor from '../components/CustomCursor';
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -14,11 +15,11 @@ const Home = () => {
 
   // Tri des projets par année
   const projects = useMemo(() => 
-    [projectsData].sort((a, b) => parseInt(b.year) - parseInt(a.year)),
+    [...projectsData].sort((a, b) => parseInt(b.year) - parseInt(a.year)),
     [projectsData]
   );
 
-  // Fixer l'image principale validée en fond pour l'immersion (plus de slideshow automatique saccadé)
+  // Fixer l'image principale validée en fond pour l'immersion
   const staticHeroImage = projects[0]?.heroImage;
 
   useEffect(() => {
@@ -56,6 +57,9 @@ const Home = () => {
 
   return (
     <div className="bg-black min-h-screen selection:bg-white selection:text-black">
+      {/* Activation du curseur personnalisé haut de gamme */}
+      <CustomCursor />
+
       {/* Navigation Épurée */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrollY > 50 ? 'bg-black/90 backdrop-blur-md border-b border-white/5' : 'bg-transparent'
@@ -126,11 +130,12 @@ const Home = () => {
                   to={`/projet/${project.slug}`} 
                   key={project.id}
                   ref={addToRefs}
+                  data-cursor="Voir" /* Étape 3 : Déclenche l'effet de luxe au survol du projet */
                   className="reveal block group"
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
                     
-                    {/* Conteneur Image sans aucun arrondi */}
+                    {/* Conteneur Image rectiligne */}
                     <div className={`lg:col-span-7 relative overflow-hidden ${
                       !isEven ? 'lg:order-2' : ''
                     }`}>
@@ -173,100 +178,4 @@ const Home = () => {
       {/* Services Section Épurée */}
       <section className="py-48 bg-[#050505] border-t border-b border-white/5">
         <div className="max-w-[1600px] mx-auto px-8 lg:px-16">
-          <div ref={addToRefs} className="reveal mb-32">
-            <p className="text-white/30 text-xs tracking-[0.3em] uppercase mb-3">Expertise</p>
-            <h2 className="text-4xl md:text-5xl font-light text-white tracking-tight">
-              L'Ingénierie Spatiale
-            </h2>
-          </div>
-
-          <div ref={addToRefs} className="reveal grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-24">
-            {services.map((service, index) => (
-              <div key={index} className="flex flex-col items-start">
-                <span className="text-xs font-light text-white/20 mb-6 font-mono">0{index + 1} //</span>
-                <h3 className="text-xl font-light text-white tracking-wide mb-4">{service.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed font-light">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Section Manifeste */}
-      <section id="about" className="py-48 bg-black">
-        <div className="max-w-[1600px] mx-auto px-8 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-            
-            <div ref={addToRefs} className="lg:col-span-6 reveal">
-              <p className="text-white/30 text-xs tracking-[0.3em] uppercase mb-4">Manifesto</p>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-white tracking-tight mb-12 leading-relaxed">
-                {aboutContent.philosophy}
-              </h2>
-              <Link 
-                to="/contact"
-                className="inline-flex items-center gap-3 text-xs uppercase tracking-widest font-light text-white border-b border-white/20 pb-1 hover:border-white transition-all duration-300"
-              >
-                Engager un dialogue
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            {aboutImage && (
-              <div ref={addToRefs} className="lg:col-span-6 reveal">
-                <div className="relative">
-                  {/* Suppression totale de l'arrondi rounded-3xl */}
-                  <div className="aspect-square bg-neutral-900 overflow-hidden">
-                    <img
-                      src={aboutImage}
-                      alt="Studio Atmosphere"
-                      className="w-full h-full object-cover opacity-60 grayscale"
-                    />
-                  </div>
-                  {/* Refonte du bloc d'années : fusion élégante dans le noir, pas de rectangle blanc */}
-                  <div className="absolute -bottom-8 -left-8 bg-[#0a0a0a] border border-white/5 p-8 max-w-xs">
-                    <p className="text-4xl font-light text-white tracking-tight mb-1">{aboutContent.years}</p>
-                    <p className="text-xs text-white/40 uppercase tracking-widest font-light">{aboutContent.yearsLabel}</p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-          </div>
-        </div>
-      </section>
-
-      {/* Footer Minimaliste de Prestige */}
-      <footer className="py-24 bg-black border-t border-white/5">
-        <div className="max-w-[1600px] mx-auto px-8 lg:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-16">
-            <div className="md:col-span-2">
-              <h3 className="text-base uppercase tracking-[0.2em] font-light text-white mb-6">{siteConfig.name}</h3>
-              <p className="text-white/40 text-xs leading-relaxed max-w-sm font-light">{siteConfig.description}</p>
-            </div>
-            <div>
-              <h4 className="text-white/30 text-xs uppercase tracking-[0.15em] mb-6">Index</h4>
-              <div className="flex flex-col gap-3">
-                <a href="#projets" className="text-xs text-white/50 hover:text-white transition-colors font-light">Projets</a>
-                <a href="#about" className="text-xs text-white/50 hover:text-white transition-colors font-light">Le Studio</a>
-                <Link to="/contact" className="text-xs text-white/50 hover:text-white transition-colors font-light">Contact</Link>
-              </div>
-            </div>
-            <div>
-              <h4 className="text-white/30 text-xs uppercase tracking-[0.15em] mb-6">Inquiries</h4>
-              <div className="flex flex-col gap-3 text-xs text-white/50 font-light">
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-white transition-colors">{siteConfig.email}</a>
-                <a href={`tel:${siteConfig.phone}`} className="hover:text-white transition-colors">{siteConfig.phone}</a>
-                <p className="text-white/30 leading-relaxed mt-2">{siteConfig.address}</p>
-              </div>
-            </div>
-          </div>
-          <div className="mt-24 pt-8 border-t border-white/5 text-left text-white/20 text-[10px] uppercase tracking-widest font-mono">
-            © {new Date().getFullYear()} {siteConfig.name}. Permanent Architecture & Technologies.
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-export default Home;
+          <div ref={addToRefs
