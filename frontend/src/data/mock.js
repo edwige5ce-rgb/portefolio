@@ -169,36 +169,6 @@ export const projects = [
     materials: ["Chêne chevrons", "Panneaux acoustiques", "Métal noir", "Tissu bouclé"],
     services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
   },
-  {
-    id: 5,
-    slug: "bazar-savant",
-    title: "Bazar Savant",
-    subtitle: "Boutique d'Ensemblière",
-    location: "Lyon, France",
-    year: "2024",
-    category: "design intérieur",
-    heroImage: "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zvsicm76_ChatGPT%20Image%2025%20janv.%202026%2C%2016_29_26.png",
-    description: "Ancienne boutique d'ensemblière qui respire la passion du cinéma. Le cuir noir, le parquet chevrons et les techniques de rénovation médiévale créent un univers intemporel et immersif pour les artistes anachroniques.",
-    features: [
-      {
-        title: "Espace Lounge",
-        description: "Canapé en cuir noir premium avec table basse en verre fumé",
-        stat: "VIP"
-      },
-      {
-        title: "Déco Cinéma",
-        description: "Éléments décoratifs inspirés du 7ème art",
-        stat: "Collector"
-      },
-      {
-        title: "Parquet Chevrons",
-        description: "Chêne clair posé en chevrons, techniques médiévales",
-        stat: "45 m²"
-      }
-    ],
-    gallery: [
-      "https://customer-assets.emergentagent.com/job_da9f0a9f-e94f-4264-86ca-a11327eaffef/artifacts/zvsicm76_ChatGPT%20Image%2025%20janv.%202026%2C%2016_29_26.png"
-    ],
     colors: ["#C2452D", "#F5F5F5", "#C4A67C", "#E85D04"],
     materials: ["Cuir noir premium", "Chêne chevrons", "Verre fumé", "Acier brossé"],
     services: ["plannification d'espace", "APS/PRO/DCE", "3D (Sketchup/Enscape)", "Matériaux & détails"]
